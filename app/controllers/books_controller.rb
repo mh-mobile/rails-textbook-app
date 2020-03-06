@@ -28,23 +28,23 @@ class BooksController < ApplicationController
     if @book.save
       redirect_to @book, notice: t("flash.actions.create.notice")
     else
-      render :new 
+      render :new
     end
   end
 
   # PATCH/PUT /books/1
   def update
     if @book.update(book_params)
-      redirect_to @book, notice: t("flash.actions.update.notice") 
+      redirect_to @book, notice: t("flash.actions.update.notice")
     else
-      render :edit 
+      render :edit
     end
   end
 
   # DELETE /books/1
   def destroy
     @book.destroy
-    redirect_to books_url, notice: t("flash.actions.destroy.notice") 
+    redirect_to books_url, notice: t("flash.actions.destroy.notice")
   end
 
   private
