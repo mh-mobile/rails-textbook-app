@@ -14,6 +14,7 @@ gem "turbolinks", "~> 5"
 gem "carrierwave"
 gem "bootsnap", ">= 1.4.2", require: false
 gem "kaminari"
+gem "bootstrap"
 
 group :development, :test do
   gem "byebug", platforms: [:mri, :mingw, :x64_mingw]
