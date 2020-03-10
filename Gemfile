@@ -18,7 +18,7 @@ gem "bootstrap"
 
 group :development, :test do
   gem "byebug", platforms: [:mri, :mingw, :x64_mingw]
-  gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'master'
+  gem "faker", git: "https://github.com/faker-ruby/faker.git", branch: "master"
 end
 
 group :development do
