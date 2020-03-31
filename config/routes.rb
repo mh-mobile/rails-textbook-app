@@ -1,7 +1,13 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
-  get 'homes/index'
+
+  root to: 'homes#index'
+
+  get 'users/:username', to: 'users#show', constraints: {
+    username: /[a-zA-Z0-9]{3,8}/
+  }
+
   devise_for :users, skip: :all
   devise_scope :user do
     # sessions
@@ -31,7 +37,5 @@ Rails.application.routes.draw do
   end
 
   resources :books
-
-  root to: 'homes#index'
 
 end
