@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
+  get 'homes/index'
   devise_for :users, skip: :all
   devise_scope :user do
     # sessions
@@ -18,7 +19,7 @@ Rails.application.routes.draw do
   # 未ログイン時のルート画面
   unauthenticated do
     as :user do
-      root to: 'users/sessions#new', as: :unauthenticated_root
+      root to: 'homes#index', as: :unauthenticated_root
     end
   end
 
@@ -30,5 +31,7 @@ Rails.application.routes.draw do
   end
 
   resources :books
+
+  root to: 'homes#index'
 
 end
