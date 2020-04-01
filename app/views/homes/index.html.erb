@@ -5,11 +5,11 @@
             <li class="title">
                 BookAppへようこそ
             </li>
-            <li class="login">
-                <%= link_to "ログイン", new_user_session_path %>
+            <li>
+                <%= link_to "ログイン", new_user_session_path, class: "login" %>
             </li>
-            <li class="signup">
-                <%= link_to "新規登録", new_user_registration_path %>
+            <li>
+                <%= link_to "新規登録", new_user_registration_path, class: "signup" %>
             </li>
         </ul>
     </div>
