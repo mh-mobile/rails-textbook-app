@@ -6,7 +6,7 @@ Rails.application.routes.draw do
 
   get 'users/:username', to: 'users#show', constraints: {
     username: /[a-zA-Z0-9]{3,8}/
-  }
+  }, as: :user
 
   devise_for :users, skip: :all
   devise_scope :user do
