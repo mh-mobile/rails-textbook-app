@@ -3,7 +3,8 @@
 Rails.application.routes.draw do
 
   root to: 'homes#index'
-
+  resources :books
+  
   get 'users/:username', to: 'users#show', constraints: {
     username: /[a-zA-Z0-9]{3,8}/
   }, as: :user
@@ -36,6 +37,6 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :books
+
 
 end
