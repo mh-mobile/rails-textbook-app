@@ -1,5 +1,6 @@
 @import "bootstrap";
 @import "homes";
+@import "header";
 
 body, html, ul {
     margin: 0px;
@@ -10,9 +11,5 @@ body {
 
     width: 100vw;
     height: 100vh;
-
-    header {
-        background-color: orange;
-        height: 100px;
-    }
+  
 }
