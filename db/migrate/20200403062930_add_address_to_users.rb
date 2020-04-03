@@ -5,6 +5,6 @@ class AddAddressToUsers < ActiveRecord::Migration[6.0]
   end
 
   def down
-    remove_column :users, :address
+    remove_column :users, :address, :string
   end
 end
