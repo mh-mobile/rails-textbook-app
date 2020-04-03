@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_03_062930) do
+ActiveRecord::Schema.define(version: 2020_04_03_091706) do
 
   create_table "books", force: :cascade do |t|
     t.string "title"
@@ -27,6 +27,7 @@ ActiveRecord::Schema.define(version: 2020_04_03_062930) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "address", null: false
+    t.string "self_introduction", null: false
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 
