@@ -5,9 +5,6 @@ Rails.application.routes.draw do
   root to: 'homes#index'
   resources :books
   
-  get 'users/:username', to: 'users#show', constraints: {
-    username: /[a-zA-Z0-9]{3,8}/
-  }, as: :user
 
   devise_for :users, skip: :all
   devise_scope :user do
@@ -22,6 +19,11 @@ Rails.application.routes.draw do
     patch 'me', to: 'users/registrations#update', as: :update_user_registration
     post 'users', to: 'users/registrations#create', as: :user_registration
   end
+
+  get 'users/:username', to: 'users#show', constraints: {
+    username: /[a-zA-Z0-9]{3,8}/
+  }, as: :user
+
 
   # 未ログイン時のルート画面
   unauthenticated do
