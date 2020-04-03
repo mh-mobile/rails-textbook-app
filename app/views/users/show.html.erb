@@ -1,2 +1,26 @@
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
+<h2>プロフィール</h2>
+
+<div class="field">
+    <strong><%= User.human_attribute_name(:username) %></strong><br />
+    <%= @user.username %>
+</div>
+
+<div class="field">
+    <strong><%= User.human_attribute_name(:email) %></strong><br />
+    <%= @user.email %>
+</div>
+
+<div class="field">
+    <strong><%= User.human_attribute_name(:postcode) %>:</strong><br />
+    <%= @user.postcode %>
+</div>
+
+<div class="field">
+    <strong><%= User.human_attribute_name(:address) %></strong><br />
+    <%= @user.address %>
+</div>
+
+<div class="field">
+    <strong><%= User.human_attribute_name(:self_introduction) %></strong><br />
+    <%= @user.self_introduction %>
+</div>
