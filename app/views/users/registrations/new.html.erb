@@ -9,6 +9,13 @@
   </div>
 
   <div class="field">
+    <%= f.label :postcode %><br />
+    <%= f.text_field :forward_postcode %>
+    -
+    <%= f.text_field :backward_postcode %>
+  </div>
+
+  <div class="field">
     <%= f.label :address %><br />
     <%= f.text_field :address %>
   </div>
