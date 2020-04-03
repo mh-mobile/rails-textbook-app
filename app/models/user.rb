@@ -9,6 +9,9 @@ class User < ApplicationRecord
   validates :backward_postcode, presence: true
   validates :postcode, format: { with: /\A\d{3}-\d{4}\Z/ }
 
+  # usernameのバリデーション
+  validates :username, uniqueness: { case_sensitive: false }, format: { with: /\A[a-zA-Z0-9]{3,8}\Z/ }
+
   before_validation  :validate_postcode
 
   private
