@@ -1,37 +1,36 @@
-
 header {
-    background-color: #e9e8dd;
-    height: 100px;
+  background-color: #e9e8dd;
+  height: 100px;
 }
 
 .header_container {
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    list-style: none;
-    height: 100%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  list-style: none;
+  height: 100%;
 
-    li:first-child {
-        margin-right: auto;
-    }
+  li:first-child {
+    margin-right: auto;
+  }
 
-    .title {
-        color: #4078c0;
-        padding: 20px;
-        font-weight: bold;
-        font-size: 3em;
-    }
+  .title {
+    color: #4078c0;
+    padding: 20px;
+    font-weight: bold;
+    font-size: 3em;
+  }
 
-    .signout {
-        color: black;
-        padding: 20px;
-        font-weight: bold;
-    }
+  .signout {
+    color: black;
+    padding: 20px;
+    font-weight: bold;
+  }
 
-    .profile {
-        color: black;
-        padding: 20px;
-        margin-right: 20px;
-        font-weight: bold;
-    }
+  .profile {
+    color: black;
+    padding: 20px;
+    margin-right: 20px;
+    font-weight: bold;
+  }
 }
