@@ -9,6 +9,9 @@ class UsersController < ApplicationController
   private
     def set_user
       username = params[:username]
-      @user = User.find_by(username: username)
+
+      # ユーザー名で検索
+      # find_by!でレコードがない場合はActiveRecord::RecordNotFoundをraisesする
+      @user = User.find_by!(username: username)
     end
 end
