@@ -2,12 +2,32 @@ ja:
   activerecord:
     models:
       book: 書籍
+      user: プロフィール
     attributes:
       book:
         title: タイトル
         memo: メモ
         author: 著者
         picture: 写真
+      user:
+        username: ユーザー名
+        postcode: 郵便番号
+        address: 住所
+        self_introduction: 自己紹介文
+        login: ユーザー名 or メールアドレス
+        email: メールアドレス
+        password: パスワード
+        password_confirmation: パスワード確認
+    errors:
+      models:
+        user:
+          attributes:
+            postcode:
+              invalid: の形式が正しくありません
+            username:
+              invalid: の形式が正しくありません。
+              too_short: は3文字以上を入力してください。
+              too_long: は30文字以下で入力してください。
   books:
     index:
       title: 書籍一覧
@@ -16,6 +36,17 @@ ja:
       title: 書籍編集
     new:
       title: 書籍新規登録
+  users:
+    registrations:
+      new:
+        title: 会員登録
+      edit:
+        title: プロフィール編集
+    sessions:
+      new:
+        title: ログイン
+    show:
+      title: プロフィール
   shared:
     links:
       create: 新規登録
@@ -23,9 +54,12 @@ ja:
       edit: 編集
       destroy: 削除
       show: 表示
+      update: 更新
+      login: ログイン
+      signup: サインアップ
   flash:
     actions:
-      create: 
+      create:
         notice: "書籍が正常に作成されました"
       update:
         notice: "書籍が正常に更新されました"
