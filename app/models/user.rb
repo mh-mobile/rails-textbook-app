@@ -8,7 +8,7 @@ class User < ApplicationRecord
   validates :postcode, format: { with: /\A\d{3}-\d{4}\Z/ }, if: :postcode_present?
 
   # usernameのバリデーション
-  validates :username, uniqueness: { case_sensitive: false }, format: { with: /\A[a-zA-Z0-9]{3,8}\Z/ }
+  validates :username, uniqueness: { case_sensitive: false }, format: { with: USERMODEL_USERNAME_REGEX }
 
   before_validation  :validate_postcode
 
