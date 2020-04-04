@@ -21,14 +21,17 @@ class User < ApplicationRecord
   # バリデーション前に郵便番号を設定
   before_validation :set_postcode
 
+  # 郵便番号の前方部分の値
   def forward_postcode
     @forward_postcode ||= postcode.present? ? postcode.split("-").first : nil
   end
 
+  # 郵便番号の後方部分の値
   def backward_postcode
     @backward_postcode ||= postcode.present? ? postcode.split("-").last : nil
   end
 
+  # ユーザー名かメールアドレスでユーザーを検索する。
   # ref. https://github.com/heartcombo/devise/wiki/How-To:-Allow-users-to-sign-in-using-their-username-or-email-address
   def self.find_first_by_auth_conditions(warden_conditions)
     conditions = warden_conditions.dup
@@ -40,11 +43,13 @@ class User < ApplicationRecord
   end
 
   private
+    # 郵便番号を設定
     def set_postcode
       # フォームデータから郵便番号を組み立てる
       self.postcode = (forward_postcode.blank? && backward_postcode.blank?) ? nil : "#{forward_postcode}-#{backward_postcode}"
     end
 
+    # 郵便番号が設定されているか
     def postcode_present?
       postcode.present?
     end
