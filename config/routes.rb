@@ -2,9 +2,7 @@
 
 Rails.application.routes.draw do
 
-  root to: 'homes#index'
   resources :books
-  
 
   devise_for :users, skip: :all
   devise_scope :user do
