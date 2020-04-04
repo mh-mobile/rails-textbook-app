@@ -16,6 +16,8 @@ class User < ApplicationRecord
   validates :postcode, format: { with: USERMODEL_POSTCODE_REGEX }, if: :postcode_present?
 
   # ユーザー名のバリデーション
+  # 英数字とハイフンのみを許可する。ハイフンは先頭と最後に使用することができない。また、連続したハイフンも使用できない。
+  # 文字数は3文字以上、30文字以内とする
   validates :username, uniqueness: { case_sensitive: false }, format: { with: USERMODEL_USERNAME_REGEX }, length: { minimum: 3, maximum: 30 }
 
   # バリデーション前に郵便番号を設定
