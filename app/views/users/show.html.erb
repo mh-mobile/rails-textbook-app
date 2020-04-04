@@ -25,4 +25,6 @@
     <%= @user.self_introduction %>
 </div>
 
+<% if current_user_page? %>
 <%= link_to t('shared.links.edit'), edit_user_registration_path %> 
+<% end %>
