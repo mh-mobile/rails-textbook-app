@@ -1,4 +1,4 @@
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
+<h2><%= t(".title") %></h2>
 
 <%= form_for(resource, as: resource_name, url: update_user_registration_path, html: { method: :patch }) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
@@ -27,8 +27,8 @@
 
 
   <div class="actions">
-    <%= f.submit "Update" %>
+    <%= f.submit t("shared.links.update") %>
   </div>
 <% end %>
 
-<%= link_to "Back", :back %>
+<%= link_to t("shared.links.back"), :back %>

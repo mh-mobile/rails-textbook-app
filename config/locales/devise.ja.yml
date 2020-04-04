@@ -1,0 +1,17 @@
+ja:
+  devise:
+    failure:
+      already_authenticated: すでにログインしています。
+      invalid: "%{authentication_keys}またはパスワードが違います。"
+      not_found_in_database: "%{authentication_keys}またはパスワードが違います。"
+      timeout: セッションがタイムアウトしました。もう一度ログインしてください。
+      unauthenticated: アカウント登録もしくはログインしてください。
+    registrations:
+      signed_up: アカウント登録が完了しました。
+      updated: アカウント情報を変更しました。
+    sessions:
+      already_signed_out: 既にログアウト済みです。
+      new:
+        sign_in: ログイン
+      signed_in: ログインしました。
+      signed_out: ログアウトしました。
