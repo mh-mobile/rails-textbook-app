@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class AddPostcodeToUsers < ActiveRecord::Migration[6.0]
   def up
     add_column :users, :postcode, :string

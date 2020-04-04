@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ChangeSelfIntroductionNullConstraintToUsers < ActiveRecord::Migration[6.0]
   def up
     change_column :users, :self_introduction, :string, null: true
