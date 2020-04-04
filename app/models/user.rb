@@ -18,7 +18,8 @@ class User < ApplicationRecord
   # ユーザー名のバリデーション
   validates :username, uniqueness: { case_sensitive: false }, format: { with: USERMODEL_USERNAME_REGEX }, length: { minimum: 3, maximum: 30 }
 
-  before_validation :validate_postcode
+  # バリデーション前に郵便番号を設定
+  before_validation :set_postcode
 
   def forward_postcode
     @forward_postcode ||= postcode.present? ? postcode.split("-").first : nil
@@ -39,7 +40,7 @@ class User < ApplicationRecord
   end
 
   private
-    def validate_postcode
+    def set_postcode
       # フォームデータから郵便番号を組み立てる
       self.postcode = (forward_postcode.blank? && backward_postcode.blank?) ? nil : "#{forward_postcode}-#{backward_postcode}"
     end
