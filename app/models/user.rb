@@ -1,9 +1,12 @@
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
-  devise :database_authenticatable, :registerable, :validatable
+  devise :database_authenticatable, :registerable, :validatable, :authentication_keys => [:login]
 
   attr_writer :forward_postcode, :backward_postcode 
+
+  # ユーザー名、メールアドレスどちらでもログインできるようにする
+  attr_accessor :login
 
   validates :postcode, format: { with: USERMODEL_POSTCODE_REGEX }, if: :postcode_present?
 
@@ -18,6 +21,16 @@ class User < ApplicationRecord
 
   def backward_postcode
     @backward_postcode ||= postcode.present? ? postcode.split("-").last : nil
+  end
+
+  # ref. https://github.com/heartcombo/devise/wiki/How-To:-Allow-users-to-sign-in-using-their-username-or-email-address
+  def self.find_first_by_auth_conditions(warden_conditions)
+    conditions = warden_conditions.dup
+    if login = conditions.delete(:login)
+      where(conditions).where(["username = :value OR lower(email) = lower(:value)", { :value => login }]).first
+    else
+      where(conditions).first
+    end
   end
 
   private
