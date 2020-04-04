@@ -60,6 +60,9 @@ ja:
       update: 更新
       login: ログイン
       signup: サインアップ
+      title: BookApp
+      signout: サインアウト
+      my_profile: マイプロフィール
   flash:
     actions:
       create:
