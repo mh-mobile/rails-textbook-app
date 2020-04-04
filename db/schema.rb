@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_04_030733) do
+ActiveRecord::Schema.define(version: 2020_04_04_032623) do
 
   create_table "books", force: :cascade do |t|
     t.string "title"
@@ -26,8 +26,8 @@ ActiveRecord::Schema.define(version: 2020_04_04_030733) do
     t.string "encrypted_password", default: "", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.string "address", null: false
-    t.string "self_introduction", null: false
+    t.string "address"
+    t.string "self_introduction"
     t.string "postcode"
     t.string "username"
     t.index ["email"], name: "index_users_on_email", unique: true
