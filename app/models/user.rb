@@ -5,7 +5,7 @@ class User < ApplicationRecord
 
   attr_writer :forward_postcode, :backward_postcode 
 
-  validates :postcode, format: { with: /\A\d{3}-\d{4}\Z/ }, if: :postcode_present?
+  validates :postcode, format: { with: USERMODEL_POSTCODE_REGEX }, if: :postcode_present?
 
   # usernameのバリデーション
   validates :username, uniqueness: { case_sensitive: false }, format: { with: USERMODEL_USERNAME_REGEX }
