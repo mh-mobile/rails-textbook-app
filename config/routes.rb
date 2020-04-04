@@ -21,7 +21,7 @@ Rails.application.routes.draw do
   end
 
   get 'users/:username', to: 'users#show', constraints: {
-    username: /[a-zA-Z0-9]{3,8}/
+    username: ROUTING_USERNAME
   }, as: :user
 
 
