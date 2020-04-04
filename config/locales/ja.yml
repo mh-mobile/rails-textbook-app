@@ -47,6 +47,9 @@ ja:
         title: ログイン
     show:
       title: プロフィール
+  homes:
+    index:
+      title: BookAppへようこそ
   shared:
     links:
       create: 新規登録
