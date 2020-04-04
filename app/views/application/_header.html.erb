@@ -1,7 +1,7 @@
 <header>
     <ul class="header_container">
         <li><%= link_to 'BookApp', books_path, class: "title" %></li>
-        <li><%= link_to 'サインアウト', destroy_user_session_path, class: "signout"  %></li>
         <li><%= link_to 'プロフィール', user_path(username: current_user.username), class: "profile" %></li>
+        <li><%= link_to 'サインアウト', destroy_user_session_path, class: "signout"  %></li>
     </ul>
 </header>
