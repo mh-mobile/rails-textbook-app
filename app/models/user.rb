@@ -1,6 +1,12 @@
 # frozen_string_literal: true
 
 class User < ApplicationRecord
+  # ユーザー名の正規表現
+  NAME_REGEX = /\A([a-z\d]+-)*[a-z\d]+\Z/.freeze
+
+  # 郵便番号の正規表現
+  POSTCODE_REGEX = /\A\d{3}-\d{4}\Z/.freeze
+
   devise :database_authenticatable, :registerable, :validatable, authentication_keys: [:login]
 
   # 郵便番号XXX-YYYYに対して以下の値を格納
@@ -13,12 +19,12 @@ class User < ApplicationRecord
 
   # 郵便番号のバリデーション
   # 入力値がある場合のみバリデーションを行う
-  validates :postcode, format: { with: USERMODEL_POSTCODE_REGEX }, if: :postcode_present?
+  validates :postcode, format: { with: POSTCODE_REGEX }, if: :postcode_present?
 
   # ユーザー名のバリデーション
   # 英数字とハイフンのみを許可する。ハイフンは先頭と最後に使用することができない。また、連続したハイフンも使用できない。
   # 文字数は3文字以上、30文字以内とする
-  validates :username, uniqueness: { case_sensitive: false }, format: { with: USERMODEL_USERNAME_REGEX }, length: { minimum: 3, maximum: 30 }
+  validates :username, uniqueness: { case_sensitive: false }, format: { with: NAME_REGEX }, length: { minimum: 3, maximum: 30 }
 
   # バリデーション前に郵便番号を設定
   before_validation :set_postcode
