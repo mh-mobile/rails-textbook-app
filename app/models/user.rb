@@ -50,6 +50,14 @@ class User < ApplicationRecord
     end
   end
 
+  def self.create_unique_string
+    SecureRandom.uid
+  end
+
+  def self.create_unique_email
+    create_unique_string + "@example.com"
+  end
+
   private
     # 郵便番号を設定
     def set_postcode

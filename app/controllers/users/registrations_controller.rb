@@ -23,4 +23,10 @@ class Users::RegistrationsController < Devise::RegistrationsController
   def update_resource(resource, params)
     resource.update_without_password(params)
   end
+
+  # 通常サインアップ時のuidの割り当て
+  def build_resource(hash=nil)
+    hash[:uid] = User.create_unique_string
+    super
+  end
 end
