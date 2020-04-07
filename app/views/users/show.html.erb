@@ -1,7 +1,7 @@
 <h2><%= t(".title") %></h2>
 
 <div class="field">
-  <%= image_tag @user.profile_icon if @user.profile_icon.attached? %>
+  <%= image_tag @user.profile_icon, class: "profile_icon" if @user.profile_icon.attached? %>
 </div>
 <div class="field">
   <strong><%= User.human_attribute_name(:username) %></strong><br />
