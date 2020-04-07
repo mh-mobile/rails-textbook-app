@@ -15,6 +15,10 @@ Rails.application.routes.draw do
     get "me/edit", to: "users/registrations#edit", as: :edit_user_registration
     patch "me", to: "users/registrations#update", as: :update_user_registration
     post "users", to: "users/registrations#create", as: :user_registration
+
+    # omniauth
+    match "auth/github", to: "users/omniauth_callbacks#passthru", via: [:GET, :POST]
+    match "auth/github/callback", to: "users/omniauth_callbacks#github", via: [:GET, :POST]
   end
 
   get "users/:username", to: "users#show", constraints: {
