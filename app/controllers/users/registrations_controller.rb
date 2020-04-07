@@ -11,7 +11,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # 更新用のパラメメータの設定
   def configure_account_update_params
-    devise_parameter_sanitizer.permit(:account_update, keys: [:username, :address, :email, :self_introduction, :password, :password_confirmation, :forward_postcode, :backward_postcode])
+    devise_parameter_sanitizer.permit(:account_update, keys: [:username, :address, :email, :self_introduction, :password, :password_confirmation, :forward_postcode, :backward_postcode, :profile_icon])
   end
 
   # 更新後のリダイレクト先
