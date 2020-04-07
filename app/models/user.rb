@@ -54,7 +54,7 @@ class User < ApplicationRecord
     user = User.where(provider: auth.provider, uid: auth.uid).first
     unless user
       user = User.create(
-        username: auth.info.name,
+        username: auth.info.nickname,
         uid: auth.uid,
         provider: auth.provider,
         email: auth.info.email,
