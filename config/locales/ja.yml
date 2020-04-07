@@ -70,6 +70,8 @@ ja:
       title: BookApp
       signout: サインアウト
       my_profile: マイプロフィール
+      github_login: Githubでログイン
+      github_signup: Githubでサインアップ
   flash:
     actions:
       create:
