@@ -15,3 +15,6 @@ ja:
         sign_in: ログイン
       signed_in: ログインしました。
       signed_out: ログアウトしました。
+    omniauth_callbacks:
+      failure: "%{kind} アカウントによる認証に失敗しました。理由:(%{reason})"
+      success: "%{kind} アカウントによる認証に成功しました。"
