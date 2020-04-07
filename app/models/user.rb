@@ -50,6 +50,20 @@ class User < ApplicationRecord
     end
   end
 
+  def self.find_for_github_oauth(auth)
+    user = User.where(provider: auth.provider, uid: auth.uid).first
+    unless user
+      user = User.create(
+        username: auth.info.name,
+        uid: auth.uid,
+        provider: auth.provider,
+        email: auth.info.email,
+        password: Devise.friendly_token[0, 20]
+      )
+    end
+    user
+  end
+
   def self.create_unique_string
     SecureRandom.uid
   end
