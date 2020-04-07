@@ -65,7 +65,7 @@ class User < ApplicationRecord
   end
 
   def self.create_unique_string
-    SecureRandom.uid
+    SecureRandom.uuid
   end
 
   def self.create_unique_email
