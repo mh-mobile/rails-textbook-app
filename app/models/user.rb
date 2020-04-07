@@ -29,6 +29,9 @@ class User < ApplicationRecord
   # バリデーション前に郵便番号を設定
   before_validation :set_postcode
 
+  # プロフィールアイコン
+  has_one_attached :profile_icon
+
   # 郵便番号の前方部分の値
   def forward_postcode
     @forward_postcode ||= postcode.present? ? postcode.split("-").first : nil
