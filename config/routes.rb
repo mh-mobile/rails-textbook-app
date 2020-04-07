@@ -17,8 +17,8 @@ Rails.application.routes.draw do
     post "users", to: "users/registrations#create", as: :user_registration
 
     # omniauth
-    match "auth/github", to: "users/omniauth_callbacks#passthru", via: [:GET, :POST]
-    match "auth/github/callback", to: "users/omniauth_callbacks#github", via: [:GET, :POST]
+    match "auth/github", to: "users/omniauth_callbacks#passthru", via: [:GET, :POST], as: :user_github_omniauth_authorize
+    match "auth/github/callback", to: "users/omniauth_callbacks#github", via: [:GET, :POST], as: :user_github_omniauth_callback
   end
 
   get "users/:username", to: "users#show", constraints: {
