@@ -15,11 +15,12 @@ Rails.application.routes.draw do
     get "me/edit", to: "users/registrations#edit", as: :edit_user_registration
     patch "me", to: "users/registrations#update", as: :update_user_registration
     post "users", to: "users/registrations#create", as: :user_registration
-
-    # omniauth
-    match "auth/github", to: "users/omniauth_callbacks#passthru", via: [:GET, :POST], as: :user_github_omniauth_authorize
-    match "auth/github/callback", to: "users/omniauth_callbacks#github", via: [:GET, :POST], as: :user_github_omniauth_callback
   end
+
+  # omniauth
+  devise_for :users, only: [:omniauth_callbacks], controllers: {
+    omniauth_callbacks: "users/omniauth_callbacks"
+  }, path: "sso"
 
   get "users/:username", to: "users#show", constraints: {
     username: ROUTING_USERNAME
