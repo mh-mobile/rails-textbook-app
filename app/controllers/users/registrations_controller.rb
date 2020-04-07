@@ -25,7 +25,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   # 通常サインアップ時のuidの割り当て
-  def build_resource(hash={})
+  def build_resource(hash = {})
     hash[:uid] = User.create_unique_string
     super
   end
