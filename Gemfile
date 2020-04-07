@@ -19,6 +19,7 @@ gem "devise"
 gem "omniauth"
 gem "omniauth-github"
 gem "dotenv-rails"
+gem "active_decorator"
 
 group :development, :test do
   gem "byebug", platforms: [:mri, :mingw, :x64_mingw]
