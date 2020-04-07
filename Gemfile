@@ -16,9 +16,9 @@ gem "bootsnap", ">= 1.4.2", require: false
 gem "kaminari"
 gem "bootstrap"
 gem "devise"
-gem 'omniauth'
-gem 'omniauth-github'
-gem 'dotenv-rails'
+gem "omniauth"
+gem "omniauth-github"
+gem "dotenv-rails"
 
 group :development, :test do
   gem "byebug", platforms: [:mri, :mingw, :x64_mingw]
