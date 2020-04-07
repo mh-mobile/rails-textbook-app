@@ -7,7 +7,7 @@ class User < ApplicationRecord
   # 郵便番号の正規表現
   POSTCODE_REGEX = /\A\d{3}-\d{4}\Z/.freeze
 
-  devise :database_authenticatable, :registerable, :validatable, authentication_keys: [:login], omniauthable, omniauth_providers: %i[github]
+  devise :database_authenticatable, :registerable, :validatable, :omniauthable, omniauth_providers: %i[github], authentication_keys: [:login]
 
   # 郵便番号XXX-YYYYに対して以下の値を格納
   # XXXをforward_postcodeに設定
