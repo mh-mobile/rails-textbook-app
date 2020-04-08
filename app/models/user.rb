@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+require 'open-uri'
 
 class User < ApplicationRecord
   # ユーザー名の正規表現
@@ -56,13 +57,21 @@ class User < ApplicationRecord
   def self.find_for_github_oauth(auth)
     user = User.where(provider: auth.provider, uid: auth.uid).first
     unless user
-      user = User.create(
+
+      # GitHubの認証情報にプロフィールアイコンが設定済みの場合は、そのアイコンをプロフィールアイコンに設定
+      # 存在しない場合は、デフォルトアイコンをプロフィールアイコンに設定
+      user_icon = auth.info.image.nil? ? File.open("app/assets/images/person_noimage.png") : open(auth.info.image)
+
+      user = User.new(
         username: auth.info.nickname,
         uid: auth.uid,
         provider: auth.provider,
         email: auth.info.email,
         password: Devise.friendly_token[0, 20]
       )
+
+      user.profile_icon.attach(io: user_icon, filename: "github_profile_icon")
+      user.save
     end
     user
   end
