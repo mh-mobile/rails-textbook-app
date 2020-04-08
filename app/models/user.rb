@@ -60,7 +60,7 @@ class User < ApplicationRecord
 
       # GitHubの認証情報にプロフィールアイコンが設定済みの場合は、そのアイコンをプロフィールアイコンに設定
       # 存在しない場合は、デフォルトアイコンをプロフィールアイコンに設定
-      user_icon = auth.info.image.nil? ? File.open("app/assets/images/person_noimage.png") : open(auth.info.image)
+      user_icon = auth.info.image.present? ? open(auth.info.image) : File.open("app/assets/images/person_noimage.png")
 
       user = User.new(
         username: auth.info.nickname,
