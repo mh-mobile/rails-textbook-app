@@ -58,11 +58,6 @@ class User < ApplicationRecord
   def self.find_for_github_oauth(auth)
     user = User.where(provider: auth.provider, uid: auth.uid).first
     unless user
-
-      # GitHubの認証情報にプロフィールアイコンが設定済みの場合は、そのアイコンをプロフィールアイコンに設定
-      # 存在しない場合は、デフォルトアイコンをプロフィールアイコンに設定
-      user_icon = auth.info.image.present? ? open(auth.info.image) : File.open("app/assets/images/person_noimage.png")
-
       user = User.new(
         username: auth.info.nickname,
         uid: auth.uid,
@@ -71,7 +66,7 @@ class User < ApplicationRecord
         password: Devise.friendly_token[0, 20]
       )
 
-      user.profile_icon.attach(io: user_icon, filename: "github_profile_icon")
+      user.profile_icon.attach(io: github_profile_icon(auth.info.image), filename: "github_profile_icon")
       user.save
     end
     user
@@ -85,6 +80,16 @@ class User < ApplicationRecord
     create_unique_string + "@example.com"
   end
 
+  # GitHubの認証情報にプロフィールアイコンが設定済みの場合は、そのアイコンをプロフィールアイコンに設定
+  # 存在しない場合は、デフォルトアイコンをプロフィールアイコンに設定
+  def self.github_profile_icon(profile_image_url)
+    if profile_image_url.present?
+      open(profile_image_url)
+    else
+      File.open("app/assets/images/person_noimage.png")
+    end
+  end
+
   private
     # 郵便番号を設定
     def set_postcode
@@ -96,4 +101,6 @@ class User < ApplicationRecord
     def postcode_present?
       postcode.present?
     end
+
+    private_class_method :github_profile_icon
 end
