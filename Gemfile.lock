@@ -87,6 +87,8 @@ GEM
       popper_js (>= 1.14.3, < 2)
       sassc-rails (>= 2.0.0)
     builder (3.2.4)
+    bulma-rails (0.8.0)
+      sassc (~> 2.0)
     byebug (11.1.1)
     capybara (3.31.0)
       addressable
@@ -306,6 +308,7 @@ DEPENDENCIES
   aws-sdk-s3
   bootsnap (>= 1.4.2)
   bootstrap
+  bulma-rails
   byebug
   capybara (>= 2.15)
   carrierwave
