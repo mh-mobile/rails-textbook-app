@@ -1,0 +1,9 @@
+.home-container
+  .content
+    ul
+      li.title
+        = t(".title")
+      li
+        = link_to t("shared.links.login"), new_user_session_path, class: "login"
+      li
+        = link_to t("shared.links.signup"), new_user_registration_path, class: "signup"
