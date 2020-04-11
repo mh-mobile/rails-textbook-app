@@ -1,0 +1,32 @@
+h2
+  = t(".title")
+.field
+  = @user.profile_icon_tag
+.field
+  strong
+    = User.human_attribute_name(:username)
+  br
+  = @user.username
+.field
+  strong
+    = User.human_attribute_name(:email)
+  br
+  = @user.email
+.field
+  strong
+    = User.human_attribute_name(:postcode)
+    | :
+  br
+  = @user.postcode
+.field
+  strong
+    = User.human_attribute_name(:address)
+  br
+  = @user.address
+.field
+  strong
+    = User.human_attribute_name(:self_introduction)
+  br
+  = @user.self_introduction
+- if current_user_page?
+  = link_to t('shared.links.edit'), edit_user_registration_path
