@@ -1,6 +1,7 @@
 h2
   = t(".title")
-= form_for(resource, as: resource_name, url: update_user_registration_path, html: { method: :patch }) do |f|
+  | mmm
+= form_with model: resource, scope: resource_name, url: update_user_registration_path, method: :patch, local: true,  id: "edit_user", class: "edit_user" do |f|
   = render "devise/shared/error_messages", resource: resource
   .field
     = resource.profile_icon_tag
