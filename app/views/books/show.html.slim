@@ -1,25 +1,25 @@
-p#notice
-  = notice
-p
-  strong
-    = Book.human_attribute_name(:title)
-    | :
-  = @book.title
-p
-  strong
-    = Book.human_attribute_name(:memo)
-    | :
-  = @book.memo
-p
-  strong
-    = Book.human_attribute_name(:author)
-    | :
-  = @book.author
-p
-  strong
-    = Book.human_attribute_name(:picture)
-    | :
-  = image_tag(@book.picture_url) if @book.picture_url.present?
-= link_to t('shared.links.edit'), edit_book_path(@book)
-|  | 
-= link_to t('shared.links.back'), books_path
+.columns.is-centered
+  .column.box.is-half
+    p
+      .label
+        = Book.human_attribute_name(:title)
+        | :
+      = @book.title
+    p
+      .label
+        = Book.human_attribute_name(:memo)
+        | :
+      = @book.memo
+    p
+      .label
+        = Book.human_attribute_name(:author)
+        | :
+      = @book.author
+    p
+      .label
+        = Book.human_attribute_name(:picture)
+        | :
+      = image_tag(@book.picture_url) if @book.picture_url.present?
+    = link_to t('shared.links.edit'), edit_book_path(@book)
+    |  | 
+    = link_to t('shared.links.back'), books_path
