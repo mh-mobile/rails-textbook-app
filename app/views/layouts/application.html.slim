@@ -12,8 +12,10 @@ html
       .container
         - if user_signed_in?
           = render 'header'
-        p.notice
-          = notice
-        p.alert
-          = alert
+        - if notice
+          p.notice.notification
+            = notice
+        - if alert
+          p.alert.notification
+            = alert
         = yield
