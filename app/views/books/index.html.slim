@@ -1,4 +1,4 @@
-h1
+h1.title
   = t('.title')
 table
   thead
@@ -33,4 +33,4 @@ div
   = paginate @books
   = page_entries_info @books
 br
-= link_to t('shared.links.create'), new_book_path
+= link_to t('shared.links.create'), new_book_path, class: ["button", "is-link"]

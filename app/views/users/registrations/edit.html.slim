@@ -25,5 +25,7 @@
       = f.text_area :self_introduction, class: "textarea"
     .actions
       = f.submit t("shared.links.update"), class: ["button", "is-link"]
-    br
+
+.columns.is-centered
+  .column.is-half
     = link_to t("shared.links.back"), :back
