@@ -1,9 +1,12 @@
-.home-container
-  .content
+.columns.is-centered.home-container
+  .column.is-half.box.has-text-centered
     ul
       li.title
         = t(".title")
-      li
-        = link_to t("shared.links.login"), new_user_session_path, class: "login"
-      li
-        = link_to t("shared.links.signup"), new_user_registration_path, class: "signup"
+      .columns.is-centered
+        .column.is-half
+          li 
+            = link_to t("shared.links.login"), new_user_session_path, class: "login", class: ["button", "is-link", "is-medium", "is-fullwidth"]
+          br
+          li
+            = link_to t("shared.links.signup"), new_user_registration_path, class: "signup", class: ["button", "is-danger", "is-medium", "is-fullwidth"]
