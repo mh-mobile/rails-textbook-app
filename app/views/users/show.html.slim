@@ -9,28 +9,23 @@
     .field
       .label
         = User.human_attribute_name(:username)
-      br
       = @user.username
     .field
       .label
         = User.human_attribute_name(:email)
-      br
       = @user.email
     .field
       .label
         = User.human_attribute_name(:postcode)
         | :
-      br
       = @user.postcode
     .field
       .label
         = User.human_attribute_name(:address)
-      br
       = @user.address
     .field
       .label
         = User.human_attribute_name(:self_introduction)
-      br
       = @user.self_introduction
     - if current_user_page?
       = link_to t('shared.links.edit'), edit_user_registration_path, class: ["button", "is-link"]
