@@ -30,6 +30,14 @@
     .actions
       = f.submit t("shared.links.signup"), class: ["button", "is-link"]
     br
+    br
+    br
     div
-      = link_to t("shared.links.github_signup"), user_github_omniauth_authorize_path
+      a.button.is-medium href="#{user_github_omniauth_authorize_path}"
+        span.icon
+          = fa_icon "github"
+        span 
+          = t("shared.links.github")
+    br
     = render "users/shared/links"
+
