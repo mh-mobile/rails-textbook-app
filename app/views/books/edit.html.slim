@@ -1,6 +1,9 @@
-h1
-  = t('.title')
+.columns.is-centered.has-text-centered
+  h1.column.title
+    = t('.title')
 = render 'form', book: @book
-= link_to t('shared.links.show'), @book
-|  | 
-= link_to t('shared.links.back'), books_path
+.columns.is-centered
+  .column.is-half
+    = link_to t('shared.links.show'), @book
+    |  | 
+    = link_to t('shared.links.back'), books_path

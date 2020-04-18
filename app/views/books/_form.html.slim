@@ -1,24 +1,26 @@
-= form_with(model: book, local: true) do |form|
-  - if book.errors.any?
-    #error_explanation
-      h2
-        = pluralize(book.errors.count, "error")
-        |  prohibited this book from being saved:
-      ul
-        - book.errors.full_messages.each do |message|
-          li
-            = message
-  .field
-    = form.label :title
-    = form.text_field :title
-  .field
-    = form.label :memo
-    = form.text_area :memo
-  .field
-    = form.label :author
-    = form.text_field :author
-  .field
-    = form.label :picture
-    = form.file_field :picture
-  .actions
-    = form.submit
+.columns.is-centered
+  = form_with(model: book, local: true, class: ["column", "box", "is-half"]) do |form|
+    - if book.errors.any?
+      #error_explanation
+        h2
+          = pluralize(book.errors.count, "error")
+          |  prohibited this book from being saved:
+        ul
+          - book.errors.full_messages.each do |message|
+            li
+              = message
+    .field
+      = form.label :title, class: "label"
+      = form.text_field :title, class: "input"
+    .field
+      = form.label :memo, class: "label"
+      = form.text_area :memo, class: "input"
+    .field
+      = form.label :author, class: "label"
+      = form.text_field :author, class: "input"
+    .field
+      = form.label :picture, class: "label"
+      = form.file_field :picture
+    br
+    .actions
+      = form.submit t("shared.links.regist"), class: ["button", "is-link"]
