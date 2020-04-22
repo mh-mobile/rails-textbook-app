@@ -34,6 +34,11 @@ class User < ApplicationRecord
   # プロフィールアイコン
   has_one_attached :profile_icon
 
+  has_many :friendships, foreign_key: "follower_id"
+  has_many :reverse_friendships, foreign_key: "followed_id", class_name: "Friendship", foreign_key: "follower_id"
+  has_many :following, through: :friendships, source: :followed, class_name: "User"
+  has_many :followers, through: :reverse_friendships, class_name: "User"
+
   # 郵便番号の前方部分の値
   def forward_postcode
     @forward_postcode ||= postcode.present? ? postcode.split("-").first : nil
@@ -89,6 +94,17 @@ class User < ApplicationRecord
       File.open("app/assets/images/person_noimage.png")
     end
   end
+  
+  def follow!(user)
+    following << user
+  end
+
+  def unfollow!(user)
+  end
+
+  def following?(user)
+    following.include?(user)
+  end
 
   private
     # 郵便番号を設定
@@ -102,5 +118,6 @@ class User < ApplicationRecord
       postcode.present?
     end
 
+ 
     private_class_method :github_profile_icon
 end

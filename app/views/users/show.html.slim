@@ -6,6 +6,10 @@
   .column.box.is-one-third
     .field
       = @user.profile_icon_tag
+    - unless current_user == @user
+      .field
+        = form_with url: follow_user_path(username: @user.username), method: :post, local: true do |f|
+          = f.submit "フォロー", class: ["button", "is-active"]
     .field
       .label
         = User.human_attribute_name(:username)
