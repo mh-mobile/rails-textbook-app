@@ -22,10 +22,24 @@ Rails.application.routes.draw do
     omniauth_callbacks: "users/omniauth_callbacks"
   }, path: "sso"
 
-  get "users/:username", to: "users#show", constraints: {
-    username: ROUTING_USERNAME
-  }, as: :user
+  # get "users/:username", to: "users#show", constraints: {
+  #   username: ROUTING_USERNAME
+  # }, as: :user
 
+  # post "users/:username/follow", to: "users/follow#follow", constraints: {
+  #   username: ROUTING_USERNAME
+  # }, as: :user_follow
+
+  # delete "users/:username/follow", to: "users/follow#unfollow", constraints: {
+  #   username: ROUTING_USERNAME
+  # }, as: :user_unfollow
+
+  constraints(username: ROUTING_USERNAME) do
+    resources :users, param: :username, only: [:show], as: :user do 
+      post "follow", to: "users/follow#follow", as: :follow, on: :member
+      delete "follow", to: "users/follow#unfollow", as: :unfollow, on: :member
+    end
+  end
 
   # 未ログイン時のルート画面
   unauthenticated do
