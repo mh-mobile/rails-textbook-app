@@ -94,12 +94,13 @@ class User < ApplicationRecord
       File.open("app/assets/images/person_noimage.png")
     end
   end
-  
+
   def follow!(user)
     following << user
   end
 
   def unfollow!(user)
+    friendships.find_by!(followed_id: user.id).destroy
   end
 
   def following?(user)
