@@ -8,6 +8,8 @@ class Users::FollowController < ApplicationController
   end
 
   def unfollow
+    return redirect_to user_path(username: @user.username) if current_user == @user
+    current_user.unfollow!(@user) if current_user.following?(@user)
     redirect_to user_path(username: @user.username), notice: "フォローを解除しました"
   end
 
