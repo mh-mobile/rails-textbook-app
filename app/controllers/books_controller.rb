@@ -5,7 +5,8 @@ class BooksController < ApplicationController
 
   # GET /books
   def index
-    @books = Book.all.page(params[:page])
+    feeds = Book.following_feeds(current_user)
+    @books = feeds.page(params[:page])
   end
 
   # GET /books/1
