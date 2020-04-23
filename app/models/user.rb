@@ -34,6 +34,9 @@ class User < ApplicationRecord
   # プロフィールアイコン
   has_one_attached :profile_icon
 
+  # ユーザーが投稿した書籍一覧
+  has_many :books
+
   has_many :friendships, foreign_key: "follower_id"
   has_many :reverse_friendships, foreign_key: "followed_id", class_name: "Friendship", foreign_key: "follower_id"
   has_many :following, through: :friendships, source: :followed, class_name: "User"
