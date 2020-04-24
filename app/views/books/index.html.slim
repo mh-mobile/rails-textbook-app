@@ -1,7 +1,9 @@
 h1.title
   = t('.title')
 .columns.is-centered
-  .column.is-3.label
+  .column.is-1.label
+    = "投稿ユーザ"
+  .column.is-2.label
     = Book.human_attribute_name(:title)
   .column.is-2.label
     = Book.human_attribute_name(:memo)
@@ -12,7 +14,9 @@ h1.title
   .column.is-3
 - @books.each do |book|
   .columns
-    .column.is-3.book_column
+    .column.is-1.book_column
+      = link_to book.user.username, user_path(username: book.user.username)
+    .column.is-2.book_column
       = book.title
     .column.is-2.book_column
       = book.memo
