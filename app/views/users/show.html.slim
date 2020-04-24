@@ -5,7 +5,17 @@
 .columns.is-centered
   .column.box.is-one-third
     .field
-      = @user.profile_icon_tag
+      .columns.is-vcentered
+        .column
+          = @user.profile_icon_tag
+        .column
+          strong
+            = "#{@user.following.count}"
+          = " following"
+        .column
+          strong
+            = "#{@user.followers.count}"
+          = " followers "
     - unless current_user == @user
       .field
         - if current_user.following?(@user)
