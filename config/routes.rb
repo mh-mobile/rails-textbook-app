@@ -37,7 +37,7 @@ Rails.application.routes.draw do
   # }, as: :user_unfollow
 
   constraints(username: ROUTING_USERNAME) do
-    resources :users, param: :username, only: [:show], as: :user do 
+    resources :users, param: :username, only: [:show, :index], as: :user do 
       post "follow", to: "users/follow#follow", as: :follow, on: :member
       delete "follow", to: "users/follow#unfollow", as: :unfollow, on: :member
     end
