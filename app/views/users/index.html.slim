@@ -1,0 +1,16 @@
+- @users.each do |user|
+  .columns.is-vcentered
+    .column.is-1
+      = user.profile_icon_tag
+    .column.is-3
+      = link_to user.username, user_path(username: user.username)
+    .column.is-2
+      - if current_user.following?(user)
+        = form_with url: follow_user_path(username: user.username), scope: :follow, method: :delete, local: true do |f|
+          = f.hidden_field :request_type, value: "users"
+          = f.submit "Following", class: ["button", "is-link", "is-active"]
+      - else
+        = form_with url: follow_user_path(username: user.username), scope: :follow, method: :post, local: true do |f|
+          = f.hidden_field :request_type, value: "users"
+          = f.submit "Follow", class: ["button", "is-light"]
+
