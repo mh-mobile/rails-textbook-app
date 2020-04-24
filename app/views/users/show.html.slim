@@ -9,13 +9,15 @@
         .column
           = @user.profile_icon_tag
         .column
-          strong
-            = "#{@user.following.count}"
-          = " following"
+          a[href="#{following_user_path(username: @user.username)}"] 
+            strong
+              = "#{@user.following.count}"
+            = " following"
         .column
-          strong
-            = "#{@user.followers.count}"
-          = " followers "
+          a[href="#{followers_user_path(username: @user.username)}"] 
+            strong
+              = "#{@user.followers.count}"
+            = " followers "
     - unless current_user == @user
       .field
         - if current_user.following?(@user)

@@ -1,13 +1,21 @@
 # frozen_string_literal: true
 
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show]
+  before_action :set_user, only: [:show, :following, :followers]
 
   def show
   end
 
   def index
     @users = User.where.not(id: current_user.id)
+  end
+
+  def following
+    @users = @user.following
+  end
+
+  def followers
+    @users = @user.followers
   end
 
   private

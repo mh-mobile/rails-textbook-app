@@ -4,9 +4,13 @@ class Users::FollowController < ApplicationController
   # フォローのリクエスト種別
   # ユーザリストからのリクエストはusers
   # プロフィールからのリクエストはprofile
+  # フォロワー画面からのリクエストはprofile
+  # フォロー画面からのリクエストはprofile
   module RequestType
     USERS = "users".freeze
     PROFILE = "profile".freeze
+    FOLLOWERS = "followers".freeze
+    FOLLOWING = "following".freeze
   end
   RequestType.freeze
 
@@ -38,6 +42,10 @@ class Users::FollowController < ApplicationController
       @redirect_path = user_path(username: @user.username)
     when RequestType::USERS
       @redirect_path = user_index_path
+    when RequestType::FOLLOWING
+      @redirect_path = following_user_path
+    when RequestType::FOLLOWERS
+      @redirect_path = followers_user_path
     end
   end
 

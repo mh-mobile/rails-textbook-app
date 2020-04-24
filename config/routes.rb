@@ -28,6 +28,8 @@ Rails.application.routes.draw do
     resources :users, param: :username, only: [:show, :index], as: :user do 
       post "follow", to: "users/follow#follow", as: :follow, on: :member
       delete "follow", to: "users/follow#unfollow", as: :unfollow, on: :member
+      get "following", to: "users#following", as: :following, on: :member
+      get "followers", to: "users#followers", as: :followers, on: :member
     end
   end
 
