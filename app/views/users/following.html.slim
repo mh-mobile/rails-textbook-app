@@ -15,4 +15,6 @@ h1.title
         = form_with url: follow_user_path(username: user.username), scope: :follow, method: :post, local: true do |f|
           = f.hidden_field :request_type, value: "following"
           = f.submit "Follow", class: ["button", "is-light"]
-
+div
+  = paginate @users
+  = page_entries_info @users

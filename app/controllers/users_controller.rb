@@ -7,15 +7,15 @@ class UsersController < ApplicationController
   end
 
   def index
-    @users = User.where.not(id: current_user.id)
+    @users = User.where.not(id: current_user.id).page(params[:page])
   end
 
   def following
-    @users = @user.following
+    @users = @user.following.page(params[:page])
   end
 
   def followers
-    @users = @user.followers
+    @users = @user.followers.page(params[:page])
   end
 
   private
