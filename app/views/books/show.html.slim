@@ -20,6 +20,7 @@
         = Book.human_attribute_name(:picture)
         | :
       = image_tag(@book.picture_url) if @book.picture_url.present?
-    = link_to t('shared.links.edit'), edit_book_path(@book)
-    |  | 
+    - if current_user == @book.user
+      = link_to t('shared.links.edit'), edit_book_path(@book)
+      |  | 
     = link_to t('shared.links.back'), books_path
