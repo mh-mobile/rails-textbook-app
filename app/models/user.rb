@@ -38,7 +38,7 @@ class User < ApplicationRecord
   has_many :books, dependent: :destroy
 
   has_many :friendships, foreign_key: "follower_id"
-  has_many :reverse_friendships, foreign_key: "followed_id", class_name: "Friendship", foreign_key: "follower_id"
+  has_many :reverse_friendships, class_name: "Friendship", foreign_key: "followed_id"
   has_many :following, through: :friendships, source: :followed, class_name: "User"
   has_many :followers, through: :reverse_friendships, class_name: "User"
 
