@@ -24,12 +24,9 @@ h1.title
       = book.author
     .column.is-2.book_column
       = book.picture
-    .column.is-1
-      = link_to t('shared.links.show'), book, class: ["button", "is-primary", "is-light"]
-    .column.is-1
-      = link_to t('shared.links.edit'), edit_book_path(book), class: ["button", "is-link", "is-light"]
-    .column.is-1
-      = link_to t('shared.links.destroy'), book, method: :delete, data: { confirm: t('.delete_confirmation') }, class: ["button", "is-danger", "is-light"]
+    - book.book_action_tags(current_user).each do |action_tag|
+      .column.is-1
+        = action_tag
 div
   = paginate @books
   = page_entries_info @books
