@@ -6,6 +6,10 @@ class UsersController < ApplicationController
   def show
   end
 
+  def index
+    @users = User.where.not(id: current_user.id)
+  end
+
   private
     def set_user
       username = params[:username]
