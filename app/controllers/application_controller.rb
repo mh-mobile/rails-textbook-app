@@ -13,4 +13,9 @@ class ApplicationController < ActionController::Base
   def current_user
     (user = super) && ActiveDecorator::Decorator.instance.decorate(user)
   end
+
+  rescue_from SecurityError do |exception|
+    redirect_to authenticated_root_path, alert: "アクセス権限がありません"
+  end
+  
 end
