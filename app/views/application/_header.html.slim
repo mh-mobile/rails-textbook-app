@@ -7,4 +7,6 @@ header.section
     li
       = link_to t("shared.links.my_profile"), user_path(username: current_user.username), class: "profile"
     li
+      = link_to "ユーザーリスト", user_index_path, class: "profile"
+    li
       = link_to t("shared.links.signout"), destroy_user_session_path, class: "signout"
