@@ -6,18 +6,11 @@
   .column.box.is-one-third
     .field
       .columns.is-vcentered
-        .column
+        .column.is-one-third
           = @user.profile_icon_tag
-        .column
-          a[href="#{following_user_path(username: @user.username)}"] 
-            strong
-              = "#{@user.following.count}"
-            = " following"
-        .column
-          a[href="#{followers_user_path(username: @user.username)}"] 
-            strong
-              = "#{@user.followers.count}"
-            = " followers "
+        .column.is-two-third
+          .columns#frienship-status
+            = render partial: "users/shared/friendship_status", locals: { user: @user }
     - unless current_user == @user
       .field id="user-#{@user.id}"
         = current_user.follow_tag(@user)
