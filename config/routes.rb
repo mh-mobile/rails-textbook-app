@@ -1,8 +1,6 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
-
-
   resources :books
 
   devise_for :users, skip: :all
@@ -25,7 +23,7 @@ Rails.application.routes.draw do
   }, path: "sso"
 
   constraints(username: ROUTING_USERNAME) do
-    resources :users, param: :username, only: [:show, :index], as: :user do 
+    resources :users, param: :username, only: [:show, :index], as: :user do
       post "follow", to: "users/follow#follow", as: :follow, on: :member
       delete "follow", to: "users/follow#unfollow", as: :unfollow, on: :member
       get "following", to: "users#following", as: :following, on: :member

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Users::FollowController < ApplicationController
   before_action :set_user
 
@@ -10,17 +12,15 @@ class Users::FollowController < ApplicationController
   end
 
   private
+    def follow_action(name)
+      return head :no_content if current_user == @user
+      current_user.send(name, @user) if current_user.canFollowAction?(name, @user)
+      render partial: "users/shared/follow", locals: { user: @user }
+    end
 
-  def follow_action(name)
-    return head :no_content if current_user == @user
-    current_user.send(name, @user) if current_user.canFollowAction?(name, @user)
-    render partial: "users/shared/follow", locals: { user: @user }
-  end
+    def set_user
+      username = params[:username]
 
-  def set_user
-    username = params[:username]
-
-    @user = User.find_by!(username: username)
-  end
-
+      @user = User.find_by!(username: username)
+    end
 end

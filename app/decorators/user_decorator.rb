@@ -32,5 +32,4 @@ module UserDecorator
     # フォロー・アンフォローにリンク生成
     link_to(title, path, method: method, remote: true, class: class_names)
   end
-
 end
