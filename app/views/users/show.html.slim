@@ -19,7 +19,7 @@
               = "#{@user.followers.count}"
             = " followers "
     - unless current_user == @user
-      .field
+      .field id="user-#{@user.id}"
         = current_user.follow_tag(@user)
     .field
       .label

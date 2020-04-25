@@ -17,7 +17,6 @@ module UserDecorator
   # 既にフォロー済みのボタンは、フォロー解除のリクエストを発行するFollowingボタンを表示する。
   # フォローしていない場合は、フォローのリクエストを発行するFollowボタンを表示する。
   def follow_tag(user)
-    id_names = ["user-#{user.id}"]
     if following?(user)
       title = "Following"
       path = unfollow_user_path(username: user.username)
@@ -31,10 +30,7 @@ module UserDecorator
     end
 
     # フォロー・アンフォローにリンク生成
-    follow_link = link_to(title, path, method: method, remote: true, class: class_names)
-
-    # divのid属性付きでリンクを返却
-    content_tag(:div, follow_link, id: id_names)
+    link_to(title, path, method: method, remote: true, class: class_names)
   end
 
 end
