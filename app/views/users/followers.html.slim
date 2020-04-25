@@ -7,14 +7,8 @@ h1.title
     .column.is-3
       = link_to user.username, user_path(username: user.username)
     .column.is-2
-      - if current_user.following?(user)
-        = form_with url: follow_user_path(username: user.username), scope: :follow, method: :delete, local: true do |f|
-          = f.hidden_field :request_type, value: "followers"
-          = f.submit "Following", class: ["button", "is-link", "is-active"]
-      - else
-        = form_with url: follow_user_path(username: user.username), scope: :follow, method: :post, local: true do |f|
-          = f.hidden_field :request_type, value: "followers"
-          = f.submit "Follow", class: ["button", "is-light"]
+      - unless current_user == user
+        = current_user.follow_tag(user)
 div
   = paginate @users
   = page_entries_info @users

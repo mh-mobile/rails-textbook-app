@@ -20,14 +20,7 @@
             = " followers "
     - unless current_user == @user
       .field
-        - if current_user.following?(@user)
-          = form_with url: follow_user_path(username: @user.username), scope: :follow, method: :delete, local: true do |f|
-            = f.hidden_field :request_type, value: "profile"
-            = f.submit "Following", class: ["button", "is-link", "is-active"]
-        - else
-          = form_with url: follow_user_path(username: @user.username), scope: :follow, method: :post, local: true do |f|
-            = f.hidden_field :request_type, value: "profile"
-            = f.submit "Follow", class: ["button", "is-light"]
+        = current_user.follow_tag(@user)
     .field
       .label
         = User.human_attribute_name(:username)
