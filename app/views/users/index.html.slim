@@ -1,11 +1,6 @@
-- @users.each do |user|
-  .columns.is-vcentered
-    .column.is-1
-      = user.profile_icon_tag
-    .column.is-3
-      = link_to user.username, user_path(username: user.username)
-    .column.is-2 id="user-#{user.id}"
-      = current_user.follow_tag(user)
+h1.title
+  = "ユーザーリスト"
+= render partial: "users/shared/user_item", collection: @users, as: "user"
 div
   = paginate @users
   = page_entries_info @users
