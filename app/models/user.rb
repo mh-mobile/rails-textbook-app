@@ -110,6 +110,11 @@ class User < ApplicationRecord
     following.include?(user)
   end
 
+  def canFollowAction?(name, user)
+    return true if name == :follow! && !current_user.following?(user)
+    name == :unfollow! && current_user.following?(user)
+  end
+
   private
     # 郵便番号を設定
     def set_postcode
