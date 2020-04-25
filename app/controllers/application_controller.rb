@@ -17,5 +17,4 @@ class ApplicationController < ActionController::Base
   rescue_from SecurityError do |exception|
     redirect_to authenticated_root_path, alert: "アクセス権限がありません"
   end
-  
 end

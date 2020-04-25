@@ -127,6 +127,6 @@ class User < ApplicationRecord
       postcode.present?
     end
 
- 
+
     private_class_method :github_profile_icon
 end
