@@ -1,0 +1,2 @@
+document.querySelector("#user-<%= user.id %>").innerHTML = '<%= current_user.follow_tag(user) %>'
+document.querySelector("#friendship-status").innerHTML = "<%= j(render(partial: "users/shared/friendship_status", locals: { user: user })) %>"

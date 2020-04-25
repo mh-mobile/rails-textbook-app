@@ -9,7 +9,7 @@
         .column.is-one-third
           = @user.profile_icon_tag
         .column.is-two-third
-          .columns#frienship-status
+          .columns#friendship-status
             = render partial: "users/shared/friendship_status", locals: { user: @user }
     - unless current_user == @user
       .field id="user-#{@user.id}"
