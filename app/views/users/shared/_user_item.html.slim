@@ -4,4 +4,5 @@
   .column.is-3
     = link_to user.username, user_path(username: user.username)
   .column.is-2 id="user-#{user.id}"
-    = current_user.follow_tag(user)
+    - unless current_user == user
+      = current_user.follow_tag(user)
