@@ -4,11 +4,13 @@ class Users::FollowController < ApplicationController
   def follow
     return head :no_content if current_user == @user
     current_user.follow!(@user) unless current_user.following?(@user)
+    render partial: "users/shared/follow", locals: { user: @user }
   end
 
   def unfollow
     return head :no_content if current_user == @user
     current_user.unfollow!(@user) if current_user.following?(@user)
+    render partial: "users/shared/follow", locals: { user: @user }
   end
 
   private
