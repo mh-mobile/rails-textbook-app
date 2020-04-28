@@ -57,7 +57,7 @@ class BooksController < ApplicationController
     end
 
     def check_permission
-      raise SecurityError unless current_user == @book.user
+      redirect_to authenticated_root_path, alert: "アクセス権限がありません" unless current_user == @book.user
     end
 
     # Only allow a list of trusted parameters through.
