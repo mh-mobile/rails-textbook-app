@@ -17,10 +17,4 @@ class Users::FollowController < ApplicationController
       current_user.send(name, @user) if current_user.canFollowAction?(name, @user)
       render partial: "users/shared/follow", locals: { user: @user }
     end
-
-    def set_user
-      username = params[:username]
-
-      @user = User.find_by!(username: username)
-    end
 end
