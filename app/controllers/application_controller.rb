@@ -1,12 +1,8 @@
 # frozen_string_literal: true
 
 class ApplicationController < ActionController::Base
+  include Authentication
   before_action :authenticate_user!
-
-  # ログイン後の遷移先
-  def after_sign_in_path_for(resource)
-    authenticated_root_path
-  end
 
   # current_userでデコレータを使えるようする。
   # ref. https://github.com/amatsuda/active_decorator/issues/98

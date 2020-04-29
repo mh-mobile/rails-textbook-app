@@ -56,10 +56,6 @@ class BooksController < ApplicationController
       @book = Book.find(params[:id])
     end
 
-    def check_permission
-      redirect_to authenticated_root_path, alert: "アクセス権限がありません" unless current_user == @book.user
-    end
-
     # Only allow a list of trusted parameters through.
     def book_params
       params.require(:book).permit(:title, :memo, :author, :picture)
