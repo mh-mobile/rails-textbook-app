@@ -3,11 +3,11 @@
 class Users::FollowController < ApplicationController
   before_action :set_user
 
-  def follow
+  def create
     follow_action(:follow!)
   end
 
-  def unfollow
+  def destroy
     follow_action(:unfollow!)
   end
 
