@@ -24,8 +24,8 @@ Rails.application.routes.draw do
 
   constraints(username: ROUTING_USERNAME) do
     resources :users, param: :username, only: [:show, :index], as: :user do
-      post "follow", to: "users/follow#create", as: :follow, on: :member
-      delete "follow", to: "users/follow#destroy", as: :unfollow, on: :member
+      post "follow", to: "users/following#create", as: :follow, on: :member
+      delete "follow", to: "users/following#destroy", as: :unfollow, on: :member
       get "following", to: "users/following#index", as: :following, on: :member
       get "followers", to: "users/followers#index", as: :followers, on: :member
     end
