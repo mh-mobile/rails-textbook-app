@@ -10,7 +10,7 @@ class ApplicationController < ActionController::Base
 
       # ユーザー名で検索
       # find_by!でレコードがない場合はActiveRecord::RecordNotFoundをraisesする
-      @user = User.find_by!(username: username)
+      @user = User.find_by!(username: params[:username])
     end
 
     # current_userでデコレータを使えるようする。
