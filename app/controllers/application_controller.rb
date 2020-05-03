@@ -6,8 +6,6 @@ class ApplicationController < ActionController::Base
 
   private
     def set_user
-      username = params[:username]
-
       # ユーザー名で検索
       # find_by!でレコードがない場合はActiveRecord::RecordNotFoundをraisesする
       @user = User.find_by!(username: params[:username])
