@@ -14,7 +14,7 @@ class Users::FollowController < ApplicationController
   private
     def follow_action(name)
       return head :no_content if current_user == @user
-      current_user.send(name, @user) if current_user.canFollowAction?(name, @user)
+      current_user.send(name, @user) if current_user.can_follow_action?(name, @user)
       render partial: "users/shared/follow", locals: { user: @user }
     end
 end

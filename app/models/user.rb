@@ -110,7 +110,7 @@ class User < ApplicationRecord
     following.include?(user)
   end
 
-  def canFollowAction?(name, user)
+  def can_follow_action?(name, user)
     return true if name == :follow! && !current_user.following?(user)
     name == :unfollow! && current_user.following?(user)
   end
