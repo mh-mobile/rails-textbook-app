@@ -1,7 +1,17 @@
 h1.title
-  = "日報一覧"
+  = t(".title") 
 
-= render partial: "report_item", collection: @reports
+.columns.is-centered
+  .column.is-1.label
+    = "投稿ユーザ"
+  .column.is-2.label
+    = Report.human_attribute_name(:title)
+  .column.is-2.label
+    = Report.human_attribute_name(:description)
+  .column.is-2.label
+    = Report.human_attribute_name(:learning_date)
+  .column.is-5
+= render partial: "report_item", collection: @reports, as: :report
 
 br
 dev
