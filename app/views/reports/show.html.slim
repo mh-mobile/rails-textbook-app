@@ -1,3 +1,21 @@
-h1.title
-  = "日報"
-
+.columns.is-centered
+  .column.box.is-half
+    p
+      .label
+        = Report.human_attribute_name(:title)
+        | :
+      = @report.title
+    p
+      .label
+        = Report.human_attribute_name(:description)
+        | :
+      = @report.description
+    p
+      .label
+        = Report.human_attribute_name(:learning_date)
+        | :
+      = @report.learning_date_string
+    - if current_user == @report.user
+      = link_to t('shared.links.edit'), edit_report_path(@report)
+      |  | 
+    = link_to t('shared.links.back'), reports_path
