@@ -28,6 +28,11 @@ class ReportsController < ApplicationController
   end
 
   def update
+    if @report.update(report_params)
+      redirect_to @report, notice: t("flash.actions.update.notice")
+    else
+      render :edit
+    end
   end
 
   def destroy

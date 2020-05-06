@@ -51,6 +51,8 @@ ja:
     index:
       title: 日報一覧
       delete_confirmation: 削除してもよろしいですか？
+    edit:
+      title: 日報編集
     new:
       title: 日報新規登録
   users:
