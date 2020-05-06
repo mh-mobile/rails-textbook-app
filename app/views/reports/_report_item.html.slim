@@ -6,4 +6,7 @@
   .column.is-2
     = report.description
   .column.is-2
-    = report.learning_date
+    = report.learning_date_string
+  - report.report_action_tags(current_user).each do |action_tag|
+    .column.is-1
+      = action_tag
