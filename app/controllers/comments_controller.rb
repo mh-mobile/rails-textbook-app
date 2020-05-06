@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class CommentsController < ApplicationController
-  before_action :set_commentale
+  before_action :set_commentale, only: [:create]
 
   def update
   end
