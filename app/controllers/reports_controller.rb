@@ -20,6 +20,8 @@ class ReportsController < ApplicationController
   end
 
   def destroy
+    @report.destroy
+    redirect_to reports_path, notice: t("flash.actions.destroy.notice")
   end
 
   private
