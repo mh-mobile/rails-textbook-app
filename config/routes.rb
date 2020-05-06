@@ -2,6 +2,7 @@
 
 Rails.application.routes.draw do
   resources :books
+  resources :reports
 
   devise_for :users, skip: :all
   devise_scope :user do
