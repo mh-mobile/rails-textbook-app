@@ -12,6 +12,13 @@ class ReportsController < ApplicationController
   end
 
   def create
+    @report = Report.new(report_params)
+    @report.user = current_user
+    if @report.save
+      redirect_to @report, notice: t("flash.actions.create.notice")
+    else
+      render :new
+    end
   end
 
   def show
@@ -31,5 +38,9 @@ class ReportsController < ApplicationController
   private
     def set_report
       @report = Report.find(params[:id])
+    end
+
+    def report_params
+      params.require(:report).permit(:title, :description, :learning_date)
     end
 end
