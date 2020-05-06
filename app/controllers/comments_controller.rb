@@ -19,4 +19,8 @@ class CommentsController < ApplicationController
       @commentable = params[:commentable_type].constantize.find(param[:commentable_id])
     end
 
+    def comment_params
+      params.require(:comment).permit(:content, :commentable_type, :commentable_id, :comment_id)
+    end
+
 end
