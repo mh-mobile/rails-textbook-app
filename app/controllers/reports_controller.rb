@@ -7,6 +7,10 @@ class ReportsController < ApplicationController
     @reports = Report.all.page(params[:page])
   end
 
+  def new
+    @report = Report.new
+  end
+
   def create
   end
 
