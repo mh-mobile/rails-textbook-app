@@ -1,0 +1,6 @@
+.columns.is-centered
+  = form_with(url: comments_path, scope: :comment, method: :post, class: ["column", "box", "is-half"]) do |form|
+    .field
+      = form.text_area :content, class: "textarea", rows: "5"
+    .actions.has-text-centered
+      = form.submit "コメントする", class: ["button", "is-primary"]
