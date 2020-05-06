@@ -1,4 +1,6 @@
 .columns.is-centered
+  .column.is-1
+    = @report.user.profile_icon_tag
   .column.box.is-half
     p
       .label
@@ -20,6 +22,18 @@
       |  | 
     = link_to t('shared.links.back'), reports_path
 
+br
+br
+.columns.is-centered
+  .column.is-1
+    strong
+     = "コメント"
+  .column.is-half
+.columns.is-centered
+  .column.is-1
+    = @report.user.profile_icon_tag
+  .column.is-half.box
+    = "コメントだよ"
 br
 br
 = render "comments/post_form"
