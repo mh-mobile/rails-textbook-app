@@ -1,0 +1,7 @@
+.columns.is-centered.has-text-centered
+  h1.column.title
+    = t('.title')
+= render 'form', report: @report
+br
+.columns.is-centered
+  = link_to t('shared.links.back'), reports_path, class: ["column", "is-half"]
