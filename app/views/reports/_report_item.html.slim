@@ -1,2 +1,9 @@
-div
-  = "れぽーとあいてむ"
+.columns
+  .column.is-1
+    = link_to report.user.username, user_path(username: report.user.username)
+  .column.is-2
+    = report.title
+  .column.is-2
+    = report.description
+  .column.is-2
+    = report.learning_date

@@ -9,6 +9,10 @@ ja:
         memo: メモ
         author: 著者
         picture: 写真
+      report:
+        title: タイトル
+        description: 内容
+        learning_date: 日付
       user:
         username: ユーザー名
         postcode: 郵便番号
@@ -43,6 +47,9 @@ ja:
       title: 書籍編集
     new:
       title: 書籍新規登録
+  reports:
+    index:
+      title: 日報一覧
   users:
     registrations:
       new:
