@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
 module Authentication
-  def check_permission
-    redirect_to authenticated_root_path, alert: "アクセス権限がありません" unless current_user == @book.user
+  def check_permission(user)
+    redirect_to authenticated_root_path, alert: "アクセス権限がありません" unless current_user == user 
   end
 
   # ログイン後の遷移先
