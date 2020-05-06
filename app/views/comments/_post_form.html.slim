@@ -3,6 +3,6 @@
     = current_user.profile_icon_tag
   = form_with(url: comments_path, scope: :comment, method: :post, class: ["column", "box", "is-half"]) do |form|
     .field
-      = form.text_area :content, class: "textarea", rows: "5"
+      = form.text_area :content, class: "textarea", rows: "5", id: "comment_text_area"
     .actions.has-text-centered
       = form.submit "コメントする", class: ["button", "is-primary"]

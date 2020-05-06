@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class CommentsController < ApplicationController
-  before_action :set_commentale, only: [:create]
+  before_action :set_commentable, only: [:create]
 
   def update
   end
@@ -10,13 +10,21 @@ class CommentsController < ApplicationController
   end
 
   def create
-
+    @comment = Comment.new(comment_params)
+    @comment.user = current_user
+    @comment.commentable = @commentable
+    if @comment.save
+      @comments = @commentable.comments
+    else
+      redirect_to "/#{@commentable.class.to_s.downcase.pluralize}/#{@commentable.id}", alert: "作成できませんでした"
+    end
   end
 
   private 
 
     def set_commentable
-      @commentable = params[:commentable_type].constantize.find(param[:commentable_id])
+#      @commentable = params[:commentable_type].constantize.find(param[:commentable_id])
+      @commentable = "Report".constantize.find(58)
     end
 
     def comment_params
