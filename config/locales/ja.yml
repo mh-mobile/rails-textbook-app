@@ -50,6 +50,7 @@ ja:
   reports:
     index:
       title: 日報一覧
+      delete_confirmation: 削除してもよろしいですか？
   users:
     registrations:
       new:
