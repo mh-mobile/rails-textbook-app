@@ -1,5 +1,6 @@
 class ReportsController < ApplicationController
     def index
+      @reports = Report.all.page(params[:page])
     end
   
     def create

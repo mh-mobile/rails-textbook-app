@@ -1,2 +1,9 @@
 h1.title
   = "日報一覧"
+
+= render partial: "report_item", collection: @reports
+
+br
+dev
+  = paginate @reports
+  = page_entries_info @reports
