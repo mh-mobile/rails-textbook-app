@@ -37,6 +37,9 @@ class User < ApplicationRecord
   # ユーザーが投稿した書籍一覧
   has_many :books, dependent: :destroy
 
+  # ユーザーが投稿した日報一覧
+  has_many :reports, dependent: :destroy
+
   has_many :friendships, foreign_key: "follower_id"
   has_many :reverse_friendships, class_name: "Friendship", foreign_key: "followed_id"
   has_many :following, through: :friendships, source: :followed, class_name: "User"
