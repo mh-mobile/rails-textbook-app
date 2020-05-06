@@ -1,4 +1,6 @@
 .columns.is-centered
+  .column.is-1
+    = current_user.profile_icon_tag
   = form_with(url: comments_path, scope: :comment, method: :post, class: ["column", "box", "is-half"]) do |form|
     .field
       = form.text_area :content, class: "textarea", rows: "5"
