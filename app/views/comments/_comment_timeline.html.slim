@@ -1,0 +1,7 @@
+.columns.is-centered
+  .column.is-1
+    strong
+     = "コメント"
+  .column.is-half
+
+= render partial: "comments/comment_timeline_item", collection: comments, as: :comment
