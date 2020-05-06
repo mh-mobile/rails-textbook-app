@@ -1,0 +1,2 @@
+document.querySelector("#comment-timeline").innerHTML = "<%= j(render(partial: "comments/comment_timeline", locals: { comments: @comments })) %>"
+document.querySelector("#comment_text_area").value = ""
