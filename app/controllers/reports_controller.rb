@@ -8,7 +8,7 @@ class ReportsController < ApplicationController
   end
 
   def new
-    @report = Report.new
+    @report = Report.new(learning_date: Date.current)
   end
 
   def create
