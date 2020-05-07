@@ -23,8 +23,7 @@ class CommentsController < ApplicationController
   private 
 
     def set_commentable
-#      @commentable = params[:commentable_type].constantize.find(param[:commentable_id])
-      @commentable = "Report".constantize.find(58)
+      @commentable = comment_params[:commentable_type].constantize.find(comment_params[:commentable_id])
     end
 
     def comment_params

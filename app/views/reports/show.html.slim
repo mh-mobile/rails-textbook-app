@@ -28,4 +28,4 @@ br
   = render partial: "comments/comment_timeline", locals: { comments: @comments }
 br
 br
-= render "comments/post_form"
+= render partial: "comments/post_form", locals: { commentable_type: "Report", commentable_id: @report.id }
