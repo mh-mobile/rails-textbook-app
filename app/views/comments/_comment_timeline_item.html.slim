@@ -10,4 +10,4 @@
         .column.is-2
           = link_to "編集", comment_path(comment), method: :patch, remote: true,  class: ["button", "is-primary"]
         .column.is-2
-          = link_to "削除", comment_path(comment), method: :delete, remote: true, class: ["button", "is-link", "is-danger"]
+          = link_to "削除", comment_path(comment), method: :delete, remote: true, class: ["button", "is-link", "is-danger"], data: { "confirm": "削除してもよろしいですか？" }
