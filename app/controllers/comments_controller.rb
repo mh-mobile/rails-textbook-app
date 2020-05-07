@@ -7,6 +7,10 @@ class CommentsController < ApplicationController
   end
 
   def destroy
+    @comment = Comment.find(params[:id])
+    unless @comment.destroy
+      head :no_content
+    end
   end
 
   def create

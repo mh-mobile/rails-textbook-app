@@ -1,7 +1,13 @@
-  .columns.is-centered[id="comment-#{comment.id}"]
+  .columns.comment.is-centered[id="comment-#{comment.id}"]
     .column.is-1
       = comment.user.profile_icon_tag
     .column.is-half.box
-      = comment.content
-  br
-  br
+      .comment_header
+        = "ヘッダー"
+      .comment_content
+        = comment.content
+      .comment_footer.columns.is-centered.has-text-centered
+        .column.is-2
+          = link_to "編集", comment_path(comment), method: :patch, remote: true,  class: ["button", "is-primary"]
+        .column.is-2
+          = link_to "削除", comment_path(comment), method: :delete, remote: true, class: ["button", "is-link", "is-danger"]

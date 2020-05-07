@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
-  resources :comments, only: [:index, :update, :destory, :create]
+  resources :comments, only: [:index, :update, :destroy, :create]
   resources :books
   resources :reports
 
