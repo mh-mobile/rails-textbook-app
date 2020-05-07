@@ -33,9 +33,15 @@ body {
   padding: 5px 10px;
 }
 
-.comment_content {
-  border-top: 1px solid #eaeaea;
+.comment_header {
   border-bottom: 1px solid #eaeaea;
+}
+
+.comment_footer {
+  border-top: 1px solid #eaeaea;
+}
+
+.comment_content {
   padding: 30px 10px;
   margin-top: 10px;
   margin-bottom: 10px;
