@@ -50,3 +50,13 @@ body {
 .comment:not(first-child) {
   margin-top: 40px;
 }
+
+#comment-timeline {
+  .normal-comment {
+    display: flex;
+  }
+
+  .edit-comment {
+    display: none;
+  }
+}
