@@ -1,4 +1,4 @@
-.columns.comment.is-centered.edit-comment
+= form_with model: comment, url: comment_path(comment), class: ["columns", "is-centered", "edit-comment"] do |form|
   .column.is-1
     = comment.user.profile_icon_tag
   .column.is-half.box
@@ -8,9 +8,9 @@
       .column.has-text-right
         = comment.updated_at.strftime("%Y年%m月%d日 %H:%M")
     .comment_content
-      = comment.content
+      = form.text_area :content, value: comment.content, class: ["textarea"]
     .comment_footer.columns.is-centered.has-text-centered
       .column.is-2
-        = link_to "キャンセル", comment_path(comment), method: :patch, remote: true,  class: ["button"]
+        = link_to "キャンセル", "javascript:void(0)", method: :patch, class: ["button", "cancel_button"]
       .column.is-2.
-        = link_to "削除", comment_path(comment), method: :delete, remote: true, class: ["button", "is-link", "is-danger"], data: { "confirm": "削除してもよろしいですか？" }
+        = link_to "保存", comment_path(comment), method: :put, remote: true, class: ["button", "is-link", "is-primary"]
