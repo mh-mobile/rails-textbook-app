@@ -3,9 +3,13 @@ document.querySelector("#comment_text_area").value = ""
 
 javascript:
   document.querySelectorAll(".comment").forEach(commentElm => {
-    console.log(commentElm)
     const editBtn = commentElm.querySelector(".edit_button")
     const cancelBtn = commentElm.querySelector(".cancel_button")
+
+    if (!editBtn || !cancelBtn) {
+      return;
+    }
+
     const normalComment = commentElm.querySelector(".normal-comment")
     const editComment = commentElm.querySelector(".edit-comment")
 
