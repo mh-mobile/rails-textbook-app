@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
 class Book < ApplicationRecord
+  include Commentable
   mount_uploader :picture, PictureUploader
   belongs_to :user
-  has_many :comments, as: :commentable, dependent: :delete_all
 
   default_scope -> { order("created_at DESC") }
 
