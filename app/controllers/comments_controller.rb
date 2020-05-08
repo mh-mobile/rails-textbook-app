@@ -3,6 +3,9 @@
 class CommentsController < ApplicationController
   before_action :set_commentable, only: [:create, :update]
   before_action :set_comment, only: [:update, :destroy]
+  before_action -> {
+    check_permission(@comment.user)
+  }, only: [:update, :destroy]
 
   def update
     unless @comment.update(comment_params)

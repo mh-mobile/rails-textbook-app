@@ -14,8 +14,9 @@
         = form.hidden_field :commentable_type, value: "#{commentable_type}"
       .field
         = form.hidden_field :commentable_id, value: "#{commentable_id}"
-    .comment_footer.columns.is-centered.has-text-centered
-      .column.is-2
-        = link_to "キャンセル", "javascript:void(0)", method: :patch, class: ["button", "cancel_button"]
-      .column.is-2.
-        = form.submit "保存", class: ["button", "is-link", "is-primary"]
+    - if current_user == comment.user
+      .comment_footer.columns.is-centered.has-text-centered
+        .column.is-2
+          = link_to "キャンセル", "javascript:void(0)", method: :patch, class: ["button", "cancel_button"]
+        .column.is-2.
+          = form.submit "保存", class: ["button", "is-link", "is-primary"]
