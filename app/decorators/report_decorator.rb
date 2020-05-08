@@ -16,6 +16,6 @@ module ReportDecorator
   end
 
   def learning_date_string
-    learning_date.strftime("%Y-%m-%d")
+    I18n.l learning_date
   end
 end

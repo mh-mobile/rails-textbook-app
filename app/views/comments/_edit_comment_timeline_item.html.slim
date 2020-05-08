@@ -6,7 +6,7 @@
       .column
         = link_to comment.user.username, user_path(username: comment.user.username)
       .column.has-text-right
-        = comment.updated_at.strftime("%Y年%m月%d日 %H:%M")
+        = l comment.updated_at
     .comment_content
       .field
         = form.text_area :content, value: comment.content, class: ["textarea"]
