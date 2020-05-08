@@ -20,6 +20,11 @@ function changeCommentView(editing, targetElm) {
   var normalComment = parentComment.querySelector(".normal-comment");
 
   // 各コメントビューの表示状態を変更する。
-  normalComment.style.display = editing ? "none" : "flex";
-  editComment.style.display = editing ? "flex" : "none";
+  if (editing) {
+    $(normalComment).css("display", "none");
+    $(editComment).css("display", "flex");
+  } else {
+    $(normalComment).css("display", "flex");
+    $(editComment).css("display", "none");
+  }
 }
