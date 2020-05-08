@@ -1,7 +1,7 @@
 .columns.is-centered
   .column.is-1
     strong
-     = "コメント"
+     = Comment.model_name.human
   .column.is-half
 
 = render partial: "comments/comment_timeline_item", collection: comments, as: :comment, locals: { commentable_type: commentable_type, commentable_id: commentable_id }
