@@ -8,9 +8,14 @@
       .column.has-text-right
         = comment.updated_at.strftime("%Y年%m月%d日 %H:%M")
     .comment_content
-      = form.text_area :content, value: comment.content, class: ["textarea"]
+      .field
+        = form.text_area :content, value: comment.content, class: ["textarea"]
+      .field
+        = form.hidden_field :commentable_type, value: "#{commentable_type}"
+      .field
+        = form.hidden_field :commentable_id, value: "#{commentable_id}"
     .comment_footer.columns.is-centered.has-text-centered
       .column.is-2
         = link_to "キャンセル", "javascript:void(0)", method: :patch, class: ["button", "cancel_button"]
       .column.is-2.
-        = link_to "保存", comment_path(comment), method: :put, remote: true, class: ["button", "is-link", "is-primary"]
+        = form.submit "保存", class: ["button", "is-link", "is-primary"]

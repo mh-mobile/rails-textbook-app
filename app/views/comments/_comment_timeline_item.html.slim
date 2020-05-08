@@ -1,3 +1,2 @@
 .comment[id="comment-#{comment.id}"]
-  = render partial: "comments/normal_comment_timeline_item", locals: { comment: comment }
-  = render partial: "comments/edit_comment_timeline_item", locals: { comment: comment }
+  = render partial: "comments/comment_timeline_item_content", locals: { comment: comment, commentable_type: commentable_type, commentable_id: commentable_id }
