@@ -9,13 +9,13 @@ class CommentsController < ApplicationController
 
   def update
     unless @comment.update(comment_params)
-      head :no_content
+      redirect_to commentable_path, alert: t("flash.actions.update.alert")
     end
   end
 
   def destroy
     unless @comment.destroy
-      head :no_content
+      redirect_to commentable_path, alert: t("flash.actions.destroy.alert")
     end
   end
 
@@ -26,7 +26,7 @@ class CommentsController < ApplicationController
     if @comment.save
       @comments = @commentable.comments.order(created_at: :ASC)
     else
-      redirect_to commentable_path, alert: "作成できませんでした"
+      redirect_to commentable_path, alert: t("flash.actions.create.alert")
     end
   end
 
