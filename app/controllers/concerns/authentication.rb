@@ -2,7 +2,7 @@
 
 module Authentication
   def check_permission(user)
-    redirect_to authenticated_root_path, alert: "アクセス権限がありません" unless current_user == user 
+    redirect_to authenticated_root_path, alert: "アクセス権限がありません" unless current_user == user
   end
 
   # ログイン後の遷移先
