@@ -1,13 +1,16 @@
 # frozen_string_literal: true
 
 class CommentsController < ApplicationController
-  before_action :set_commentable, only: [:create]
+  before_action :set_commentable, only: [:create, :update]
+  before_action :set_comment, only: [:update, :destroy]
 
   def update
+    unless @comment.update(comment_params)
+      head :no_content
+    end
   end
 
   def destroy
-    @comment = Comment.find(params[:id])
     unless @comment.destroy
       head :no_content
     end
@@ -25,6 +28,10 @@ class CommentsController < ApplicationController
   end
 
   private 
+
+    def set_comment
+      @comment = Comment.find(params[:id])
+    end
 
     def set_commentable
       @commentable = comment_params[:commentable_type].constantize.find(comment_params[:commentable_id])
