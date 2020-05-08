@@ -3,6 +3,8 @@ ja:
     models:
       book: 書籍
       user: プロフィール
+      report: 日報
+      comment: コメント
     attributes:
       book:
         title: タイトル
@@ -23,7 +25,24 @@ ja:
         password: パスワード
         password_confirmation: パスワード確認
     errors:
+      template:
+        header:
+          one: "%{model}にエラーが発生しました"
+          other: "%{model}に%{count}個のエラーが発生しました"
       models:
+        report:
+          attributes:
+            title: 
+              blank: を入力してください。
+            description:
+              blank: を入力してください。
+            learning_date:
+              blank: を入力してください。
+              taken: は既に作成済みです。
+        comment:
+          attributes:
+            content:
+              blank: を入力してください。
         user:
           attributes:
             postcode:
@@ -74,6 +93,8 @@ ja:
       create: 新規登録
       back: 戻る
       edit: 編集
+      save: 保存
+      cancel: キャンセル
       regist: 登録
       destroy: 削除
       show: 表示
@@ -85,14 +106,19 @@ ja:
       my_profile: マイプロフィール
       github_login: Githubでログイン
       github_signup: Githubでサインアップ
+      user_list: ユーザーリスト
+      report_list: 日報一覧
   flash:
     actions:
       create:
         notice: "正常に作成されました"
+        alert: "作成できませんでした"
       update:
         notice: "正常に更新されました"
+        alert: "更新できませんでした"
       destroy:
         notice: "正常に削除されました"
+        alert: "削除できませんでした"
   helpers:
     submit:
       create: 新規登録
@@ -100,3 +126,4 @@ ja:
   errors:
     messages:
       not_saved: 登録に失敗しました。
+
