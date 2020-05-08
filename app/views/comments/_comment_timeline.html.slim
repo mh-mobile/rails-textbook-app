@@ -5,27 +5,3 @@
   .column.is-half
 
 = render partial: "comments/comment_timeline_item", collection: comments, as: :comment, locals: { commentable_type: commentable_type, commentable_id: commentable_id }
-
-javascript:
-  document.querySelectorAll(".comment").forEach(commentElm => {
-    const editBtn = commentElm.querySelector(".edit_button")
-    const cancelBtn = commentElm.querySelector(".cancel_button")
-
-    if (!editBtn || !cancelBtn) {
-      return;
-    }
-
-    const normalComment = commentElm.querySelector(".normal-comment")
-    const editComment = commentElm.querySelector(".edit-comment")
-
-    editBtn.addEventListener("click", () => {
-      normalComment.style.display = "none";
-      editComment.style.display = "flex";
-    })
-
-    cancelBtn.addEventListener("click", () => {
-      normalComment.style.display = "flex";
-      editComment.style.display = "none";
-    })
-
-  })
