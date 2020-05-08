@@ -1,7 +1,9 @@
-module Commentable 
+# frozen_string_literal: true
+
+module Commentable
   extend ActiveSupport::Concern
 
-  included do 
+  included do
     has_many :comments, as: :commentable, dependent: :delete_all
   end
 
