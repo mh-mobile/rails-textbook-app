@@ -14,7 +14,7 @@ class BooksController < ApplicationController
 
   # GET /books/1
   def show
-    @comments = @book.comments
+    @comments = @book.comments.order(created_at: :ASC)
   end
 
   # GET /books/new

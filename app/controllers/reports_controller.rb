@@ -25,7 +25,7 @@ class ReportsController < ApplicationController
   end
 
   def show
-    @comments = @report.comments
+    @comments = @report.comments.order(created_at: :ASC)
   end
 
   def edit

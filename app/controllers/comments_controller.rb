@@ -24,7 +24,7 @@ class CommentsController < ApplicationController
     @comment.user = current_user
     @comment.commentable = @commentable
     if @comment.save
-      @comments = @commentable.comments
+      @comments = @commentable.comments.order(created_at: :ASC)
     else
       redirect_to commentable_path, alert: "作成できませんでした"
     end
