@@ -24,6 +24,11 @@
       = link_to t('shared.links.edit'), edit_book_path(@book)
       |  | 
     = link_to t('shared.links.back'), books_path
+
 br
 br
-= render "comments/post_form"
+#comment-timeline
+  = render partial: "comments/comment_timeline", locals: { comments: @comments, commentable_type: "Book", commentable_id: @book.id }
+br
+br
+= render partial: "comments/post_form", locals: { commentable_type: "Book", commentable_id: @book.id }
