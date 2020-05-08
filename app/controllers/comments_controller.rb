@@ -23,11 +23,15 @@ class CommentsController < ApplicationController
     if @comment.save
       @comments = @commentable.comments
     else
-      redirect_to "/#{@commentable.class.to_s.downcase.pluralize}/#{@commentable.id}", alert: "作成できませんでした"
+      redirect_to commentable_path, alert: "作成できませんでした"
     end
   end
 
   private 
+
+    def commentable_path
+      "/#{@commentable.plural_name}/#{@commentable.id}"
+    end
 
     def set_comment
       @comment = Comment.find(params[:id])
