@@ -3,7 +3,7 @@ h1.title
 
 .columns.is-centered
   .column.is-1.label
-    = "投稿ユーザ"
+    = User.human_attribute_name(:username)
   .column.is-2.label
     = Report.human_attribute_name(:title)
   .column.is-2.label
