@@ -61,7 +61,6 @@ ja:
   books:
     index:
       title: 書籍一覧
-      delete_confirmation: 削除してもよろしいですか？
     edit:
       title: 書籍編集
     new:
@@ -69,7 +68,6 @@ ja:
   reports:
     index:
       title: 日報一覧
-      delete_confirmation: 削除してもよろしいですか？
     edit:
       title: 日報編集
     new:
@@ -108,6 +106,9 @@ ja:
       github_signup: Githubでサインアップ
       user_list: ユーザーリスト
       report_list: 日報一覧
+      comment: コメントする
+    confirmation:
+      delete: 削除してもよろしいですか？
   flash:
     actions:
       create:

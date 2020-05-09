@@ -9,4 +9,4 @@
     .field
       = form.hidden_field :commentable_id, value: "#{commentable_id}"
     .actions.has-text-centered
-      = form.submit "コメントする", class: ["button", "is-primary"]
+      = form.submit t("shared.links.comment"), class: ["button", "is-primary"]
