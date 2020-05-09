@@ -6,7 +6,7 @@ module BookDecorator
       [
           link_to(t("shared.links.show"), self, class: ["button", "is-primary", "is-light"]),
           link_to(t("shared.links.edit"), edit_book_path(self), class: ["button", "is-link", "is-light"]),
-          link_to(t("shared.links.destroy"), self, method: :delete, data: { confirm: t("books.index.delete_confirmation") }, class: ["button", "is-danger", "is-light"])
+          link_to(t("shared.links.destroy"), self, method: :delete, data: { confirm: t("shared.confirmation.delete") }, class: ["button", "is-danger", "is-light"])
       ]
     else
       [
