@@ -22,7 +22,6 @@ class CommentsController < ApplicationController
   def create
     @comment = Comment.new(comment_params)
     @comment.user = current_user
-    @comment.commentable = @commentable
     if @comment.save
       @comments = @commentable.comments.order(created_at: :ASC)
     else
