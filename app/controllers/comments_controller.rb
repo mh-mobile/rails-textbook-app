@@ -21,7 +21,7 @@ class CommentsController < ApplicationController
     @comment = Comment.new(comment_params)
     @comment.user = current_user
     if @comment.save
-      @comments = @commentable.comments.order(created_at: :ASC)
+      @comments = @commentable.comments
     else
       redirect_to commentable_path, alert: t("flash.actions.create.alert")
     end
