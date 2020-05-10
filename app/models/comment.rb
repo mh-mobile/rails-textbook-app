@@ -7,4 +7,6 @@ class Comment < ApplicationRecord
   validates :content, presence: true
   validates :commentable_type, presence: true
   validates :commentable_id, presence: true
+
+  default_scope -> { order(:created_at) }
 end
