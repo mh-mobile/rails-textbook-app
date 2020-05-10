@@ -16,4 +16,8 @@ class ApplicationController < ActionController::Base
     def current_user
       (user = super) && ActiveDecorator::Decorator.instance.decorate(user)
     end
+
+    def resource
+      self.instance_variable_get("@#{controller_name.singularize}")
+    end
 end
