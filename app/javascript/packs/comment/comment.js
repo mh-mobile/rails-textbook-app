@@ -1,21 +1,13 @@
-// コメントの編集ボタンのclickイベントを設定
-document.body.addEventListener(
+var commentTimeline = document.querySelector("#comment-timeline");
+
+// コメントの編集・キャンセルボタンのclickイベントを設定
+commentTimeline.addEventListener(
   "click",
   function (event) {
     var target = event.target;
     if (isTargetElm(target, "edit_button")) {
       changeCommentView(true, target);
-    }
-  },
-  false
-);
-
-// コメントのキャンセルボタンのclickイベントを設定
-document.body.addEventListener(
-  "click",
-  function (event) {
-    var target = event.target;
-    if (isTargetElm(target, "cancel_button")) {
+    } else if (isTargetElm(target, "cancel_button")) {
       changeCommentView(false, target);
     }
   },
