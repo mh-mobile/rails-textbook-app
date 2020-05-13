@@ -4,7 +4,7 @@ class Report < ApplicationRecord
   include Commentable
   belongs_to :user
 
-  default_scope -> { order("created_at DESC") }
+  default_scope -> { order(created_at: :desc) }
 
   validates :title, presence: true
   validates :learning_date, presence: true, uniqueness: { scope: :user }
