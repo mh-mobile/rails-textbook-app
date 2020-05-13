@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
 class BooksController < ApplicationController
-  before_action :set_book, only: [:show, :edit, :update, :destroy]
-  before_action :check_permission, only: [:edit, :update, :destroy]
+  before_action :set_book, only: [:show]
+  before_action :set_my_book, only: [:edit, :update, :destroy]
 
   # GET /books
   def index
@@ -55,6 +55,10 @@ class BooksController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_book
       @book = Book.find(params[:id])
+    end
+
+    def set_my_book
+      @book = current_user.books.find(params[:id])
     end
 
     # Only allow a list of trusted parameters through.

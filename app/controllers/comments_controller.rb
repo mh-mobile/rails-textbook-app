@@ -2,8 +2,7 @@
 
 class CommentsController < ApplicationController
   before_action :set_commentable, only: [:create, :update]
-  before_action :set_comment, only: [:update, :destroy]
-  before_action :check_permission, only: [:update, :destroy]
+  before_action :set_my_comment, only: [:update, :destroy]
 
   def update
     unless @comment.update(comment_params)
@@ -32,8 +31,8 @@ class CommentsController < ApplicationController
       "/#{@commentable.plural_name}/#{@commentable.id}"
     end
 
-    def set_comment
-      @comment = Comment.find(params[:id])
+    def set_my_comment
+      @comment = current_user.comments.find(params[:id])
     end
 
     def set_commentable
