@@ -10,10 +10,6 @@
     .comment_content
       .field
         = form.text_area :content, value: comment.content, class: ["textarea"]
-      .field
-        = form.hidden_field :commentable_type, value: "#{commentable_type}"
-      .field
-        = form.hidden_field :commentable_id, value: "#{commentable_id}"
     - if current_user == comment.user
       .comment_footer.columns.is-centered.has-text-centered
         .column.is-2
