@@ -5,7 +5,7 @@ class Book < ApplicationRecord
   mount_uploader :picture, PictureUploader
   belongs_to :user
 
-  default_scope -> { order("created_at DESC") }
+  default_scope -> { order(created_at: :desc) }
 
   def self.following_feeds(user)
     following_ids_sql = "SELECT followed_id from friendships WHERE follower_id = :user_id"
