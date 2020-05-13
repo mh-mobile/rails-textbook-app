@@ -1,1 +1,1 @@
-document.querySelector("#comment-<%= @comment.id %>").innerHTML = "<%= j(render(partial: "comments/comment_timeline_item_content", locals: { comment: @comment, commentable_type: @commentable.class.to_s, commentable_id: @commentable.id })) %>"
+document.querySelector("#comment-<%= @comment.id %>").innerHTML = "<%= j(render(partial: "comments/comment_timeline_item_content", locals: { comment: @comment })) %>"
