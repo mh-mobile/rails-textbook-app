@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class CommentsController < ApplicationController
-  before_action :set_commentable, only: [:create, :update]
+  before_action :set_commentable, only: [:create]
   before_action :set_my_comment, only: [:update, :destroy]
 
   def update
