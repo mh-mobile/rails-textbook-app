@@ -1,0 +1,83 @@
+comment_1:
+  content: はじめまして
+  user: hiro
+  commentable: book_1
+  commentable_type: Book
+  created_at: 2020-01-01 00:00:0
+
+comment_2:
+  content: すばらしいです
+  user: hanako
+  commentable: book_1
+  commentable_type: Book
+  created_at: 2020-01-02 00:00:0
+
+comment_3:
+  content: ありがとうございます
+  user: mh-mobile
+  commentable: book_1
+  commentable_type: Book
+  created_at: 2020-01-03 00:00:0
+
+comment_4:
+  content: はじめまして
+  user: hiro
+  commentable: book_2
+  commentable_type: Book
+  created_at: 2020-01-04 00:00:0
+
+comment_5:
+  content: すばらしいです
+  user: hanako
+  commentable: book_2
+  commentable_type: Book
+  created_at: 2020-01-05 00:00:0
+
+comment_6:
+  content: ありがとうございます
+  user: mh-mobile
+  commentable: book_2
+  commentable_type: Book
+  created_at: 2020-01-06 00:00:0
+
+comment_7:
+  content: はじめまして
+  user: hiro
+  commentable: report_1
+  commentable_type: Report
+  created_at: 2020-01-07 00:00:0
+
+comment_8:
+  content: すばらしいです
+  user: hanako
+  commentable: report_1
+  commentable_type: Report
+  created_at: 2020-01-08 00:00:0
+
+comment_9:
+  content: ありがとうございます
+  user: mh-mobile
+  commentable: report_1
+  commentable_type: Report
+  created_at: 2020-01-09 00:00:0
+
+comment_10:
+  content: はじめまして
+  user: hiro
+  commentable: report_2
+  commentable_type: Report
+  created_at: 2020-01-10 00:00:0
+
+comment_11:
+  content: すばらしいです
+  user: hanako
+  commentable: report_2
+  commentable_type: Report
+  created_at: 2020-01-11 00:00:0
+
+comment_12:
+  content: ありがとうございます
+  user: mh-mobile
+  commentable: report_2
+  commentable_type: Report
+  created_at: 2020-01-12 00:00:0
