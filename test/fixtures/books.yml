@@ -1,0 +1,41 @@
+book_1:
+  title: リファクタリング:Rubyエディション
+  author: ジェイ・フィールド
+  memo: リファクタリングを学ぶ良書
+  user: mh-mobile
+  created_at: 2020-01-01 00:00:00
+
+book_2:
+  title: メタプログラミングRuby
+  author: Paolo Perrotta
+  memo: メタプログラミングの良書
+  user: mh-mobile
+  created_at: 2020-01-02 00:00:00
+
+book_3:
+  title: Effective Ruby
+  author: Peter J.Jones
+  memo: Ruby中級者向け
+  user: hiro
+  created_at: 2020-01-03 00:00:00
+
+book_4:
+  title: RubyでつくるRuby ゼロから学びなおすプログラミング言語入門
+  author: 遠藤 侑介
+  memo: 言語の自作を学ぶのに良いかも
+  user: hiro
+  created_at: 2020-01-04 00:00:00
+
+book_5:
+  title: エリック・エヴァンスのドメイン駆動設計
+  author: Eric Evans
+  memo: 良い設計を行うために読みたい
+  user: hanako
+  created_at: 2020-01-05 00:00:00
+
+book_6:
+  title: 現場で使える Ruby on Rails 5速習実践ガイド
+  author: 大場 寧子
+  memo: 現場で使える知識を身に付けるのに良い
+  user: taro
+  created_at: 2020-01-06 00:00:00
