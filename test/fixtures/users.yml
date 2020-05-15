@@ -1,7 +1,23 @@
-# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+mh-mobile:
+  username: mh-mobile
+  email: mh-mobile@example.com
+  encrypted_password: QjT7QeyjUDUYz2Fy
+  uid: <%= User.create_unique_string %>
 
-one:
-  name: MyString
+hiro:
+  username: hiro 
+  email: hiro@example.com
+  encrypted_password: QjT7QeyjUDUYz2Fy
+  uid: <%= User.create_unique_string %>
 
-two:
-  name: MyString
+hanako:
+  username: hanako
+  email: hanako@example.com
+  encrypted_password: QjT7QeyjUDUYz2Fy
+  uid: <%= User.create_unique_string %>
+
+taro:
+  username: taro
+  email: taro@example.com
+  encrypted_password: QjT7QeyjUDUYz2Fy
+  uid: <%= User.create_unique_string %>
