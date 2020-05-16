@@ -12,11 +12,12 @@ class BookTest < ActiveSupport::TestCase
 
   test "#save" do
     mh_mobile = users(:mh_mobile)
-    book = Book.new(title: "タイトル",
-        author: "著者",
-        memo: "メモ",
-        user: mh_mobile,
-        created_at: "2020-01-06 00:00:0"
+    book = Book.new(
+      title: "タイトル",
+      author: "著者",
+      memo: "メモ",
+      user: mh_mobile,
+      created_at: "2020-01-06 00:00:0"
       )
     book.save
     assert book["id"].present?
