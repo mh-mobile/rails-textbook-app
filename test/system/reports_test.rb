@@ -1,9 +1,23 @@
+# frozen_string_literal: true
+
 require "application_system_test_case"
 
 class ReportsTest < ApplicationSystemTestCase
-  # test "visiting the index" do
-  #   visit reports_url
-  #
-  #   assert_selector "h1", text: "Reports"
-  # end
+  test "show listing reports" do
+  end
+
+  test "show report" do
+  end
+
+  test "create report" do
+  end
+
+  test "edit report" do
+  end
+
+  test "update report" do
+  end
+
+  test "delete report" do
+  end
 end
