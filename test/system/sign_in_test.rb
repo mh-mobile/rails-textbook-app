@@ -3,9 +3,12 @@
 require "application_system_test_case"
 
 class SignInTest < ApplicationSystemTestCase
-  # test "visiting the index" do
-  #   visit sign_ins_url
-  #
-  #   assert_selector "h1", text: "SignIn"
-  # end
+  test "show signin page" do
+  end
+
+  test "create session" do
+  end
+
+  test "logout after signin" do
+  end
 end

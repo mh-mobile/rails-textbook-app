@@ -3,9 +3,9 @@
 require "application_system_test_case"
 
 class ProfileTest < ApplicationSystemTestCase
-  # test "visiting the index" do
-  #   visit profiles_url
-  #
-  #   assert_selector "h1", text: "Profile"
-  # end
+  test "edit current user's profile" do
+  end
+
+  test "update current user's profile" do
+  end
 end
