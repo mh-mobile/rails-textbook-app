@@ -21,3 +21,4 @@ taro:
   email: taro@example.com
   encrypted_password: QjT7QeyjUDUYz2Fy
   uid: <%= User.create_unique_string %>
+  postcode: "100-0005"
