@@ -1,9 +1,23 @@
+# frozen_string_literal: true
+
 require "application_system_test_case"
 
 class BooksTest < ApplicationSystemTestCase
-  # test "visiting the index" do
-  #   visit books_url
-  #
-  #   assert_selector "h1", text: "Books"
-  # end
+  test "show listing books" do
+  end
+
+  test "show book" do
+  end
+
+  test "create book" do
+  end
+
+  test "edit book" do
+  end
+
+  test "update book" do
+  end
+
+  test "delete book" do
+  end
 end
