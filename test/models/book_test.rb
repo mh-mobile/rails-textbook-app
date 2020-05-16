@@ -22,4 +22,26 @@ class BookTest < ActiveSupport::TestCase
     book.save
     assert book["id"].present?
   end
+
+  test ".following_feeds" do
+    mh_mobile = users(:mh_mobile) 
+    hiro = users(:hiro)
+    hanako = users(:hanako)
+    taro = users(:taro)
+
+    mh_mobile.follow!(hiro)
+    mh_mobile.follow!(hanako)
+    mh_mobile.follow!(taro)
+    following_feeds = Book.following_feeds(mh_mobile)
+    expected_feeds = [
+      books(:book_6),
+      books(:book_5),
+      books(:book_4),
+      books(:book_3),
+      books(:book_2),
+      books(:book_1),
+    ]
+
+    assert_equal expected_feeds, following_feeds
+  end
 end
