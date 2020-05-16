@@ -3,9 +3,9 @@
 require "application_system_test_case"
 
 class SignUpTest < ApplicationSystemTestCase
-  # test "visiting the index" do
-  #   visit sign_ups_url
-  #
-  #   assert_selector "h1", text: "SignUp"
-  # end
+  test "show signup" do
+  end
+
+  test "create user" do
+  end
 end
