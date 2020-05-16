@@ -24,7 +24,7 @@ class BookTest < ActiveSupport::TestCase
   end
 
   test ".following_feeds" do
-    mh_mobile = users(:mh_mobile) 
+    mh_mobile = users(:mh_mobile)
     hiro = users(:hiro)
     hanako = users(:hanako)
     taro = users(:taro)
