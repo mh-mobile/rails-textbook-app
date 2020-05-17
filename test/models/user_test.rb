@@ -27,43 +27,42 @@ class UserTest < ActiveSupport::TestCase
 
   test "#follow!" do
     mh_mobile = users(:mh_mobile)
-    hiro = users(:hiro)
+    hanako = users(:hanako)
 
-    mh_mobile.follow!(hiro)
-    assert_equal 1, mh_mobile.following.count
-    assert_equal 1, hiro.followers.count
+    mh_mobile.follow!(hanako)
+    assert_equal 2, mh_mobile.following.count
+    assert_equal 1, hanako.followers.count
   end
 
   test "#unfollow!" do
     mh_mobile = users(:mh_mobile)
-    hiro = users(:hiro)
+    taro = users(:taro)
     hanako = users(:hanako)
 
-    mh_mobile.follow!(hiro)
+    mh_mobile.follow!(taro)
     mh_mobile.follow!(hanako)
-    mh_mobile.unfollow!(hiro)
+    mh_mobile.unfollow!(taro)
 
-    assert_equal 1, mh_mobile.following.count
-    assert_equal 0, hiro.followers.count
+    assert_equal 2, mh_mobile.following.count
+    assert_equal 0, taro.followers.count
     assert_equal 1, hanako.followers.count
   end
 
   test "#following" do
     mh_mobile = users(:mh_mobile)
-    hiro = users(:hiro)
     hanako = users(:hanako)
     taro = users(:taro)
 
-    mh_mobile.following << [hiro, hanako, taro]
+    mh_mobile.following << [hanako, taro]
     assert_equal 3, mh_mobile.following.count
   end
 
   test "#followers" do
     mh_mobile = users(:mh_mobile)
-    hiro = users(:hiro)
     hanako = users(:hanako)
+    hiro = users(:hiro)
     taro = users(:taro)
-    mh_mobile.followers << [hiro, hanako, taro]
+    mh_mobile.followers << [hanako, hiro, taro]
 
     assert_equal 3, mh_mobile.followers.count
   end

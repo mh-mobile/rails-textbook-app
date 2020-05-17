@@ -25,11 +25,9 @@ class BookTest < ActiveSupport::TestCase
 
   test ".following_feeds" do
     mh_mobile = users(:mh_mobile)
-    hiro = users(:hiro)
     hanako = users(:hanako)
     taro = users(:taro)
 
-    mh_mobile.follow!(hiro)
     mh_mobile.follow!(hanako)
     mh_mobile.follow!(taro)
     following_feeds = Book.following_feeds(mh_mobile)
