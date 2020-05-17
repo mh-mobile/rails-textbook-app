@@ -41,7 +41,7 @@ class ReportsTest < ApplicationSystemTestCase
     report_1 = reports(:report_1)
     visit "/reports/#{report_1.id}/edit"
     assert_text "日報編集"
-    
+
     assert_equal report_1.title, find("input[name='report[title]']").value
     assert_equal report_1.learning_date.strftime("%Y-%m-%d"), find("input[name='report[learning_date]']").value, report_1.learning_date.strftime("%y-%m-%d")
     assert_equal report_1.description, find("textarea[name='report[description]']").value
