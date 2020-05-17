@@ -29,9 +29,10 @@ class UserTest < ActiveSupport::TestCase
     mh_mobile = users(:mh_mobile)
     hanako = users(:hanako)
 
-    mh_mobile.follow!(hanako)
-    assert_equal 2, mh_mobile.following.count
-    assert_equal 1, hanako.followers.count
+    assert_difference -> { mh_mobile.following.count } => 1, -> { hanako.followers.count } => 1 do 
+      mh_mobile.follow!(hanako)
+    end
+
   end
 
   test "#unfollow!" do
@@ -39,11 +40,15 @@ class UserTest < ActiveSupport::TestCase
     taro = users(:taro)
     hanako = users(:hanako)
 
-    mh_mobile.follow!(taro)
-    mh_mobile.follow!(hanako)
-    mh_mobile.unfollow!(taro)
+    assert_difference "mh_mobile.following.count", 2 do 
+      mh_mobile.follow!(taro)
+      mh_mobile.follow!(hanako)
+    end
 
-    assert_equal 2, mh_mobile.following.count
+    assert_difference "mh_mobile.following.count", -1 do 
+      mh_mobile.unfollow!(taro)
+    end
+
     assert_equal 0, taro.followers.count
     assert_equal 1, hanako.followers.count
   end
@@ -53,8 +58,9 @@ class UserTest < ActiveSupport::TestCase
     hanako = users(:hanako)
     taro = users(:taro)
 
-    mh_mobile.following << [hanako, taro]
-    assert_equal 3, mh_mobile.following.count
+    assert_difference "mh_mobile.following.count", 2 do
+      mh_mobile.following << [hanako, taro]
+    end
   end
 
   test "#followers" do
@@ -62,8 +68,9 @@ class UserTest < ActiveSupport::TestCase
     hanako = users(:hanako)
     hiro = users(:hiro)
     taro = users(:taro)
-    mh_mobile.followers << [hanako, hiro, taro]
 
-    assert_equal 3, mh_mobile.followers.count
+    assert_difference "mh_mobile.followers.count", 3 do
+      mh_mobile.followers << [hanako, hiro, taro]
+    end
   end
 end
