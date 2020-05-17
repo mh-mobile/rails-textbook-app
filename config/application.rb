@@ -19,6 +19,7 @@ module BooksApp
     # the framework and any gems in your application.
     config.hosts << ".ngrok.io"
     config.hosts << "127.0.0.1"
+    config.hosts << "localhost"
     config.i18n.default_locale = :ja
     config.time_zone = "Asia/Tokyo"
   end
