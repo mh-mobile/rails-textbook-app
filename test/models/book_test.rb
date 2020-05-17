@@ -28,8 +28,11 @@ class BookTest < ActiveSupport::TestCase
     hanako = users(:hanako)
     taro = users(:taro)
 
-    mh_mobile.follow!(hanako)
-    mh_mobile.follow!(taro)
+    assert_difference "Book.following_feeds(mh_mobile).count",  2 do
+      mh_mobile.follow!(hanako)
+      mh_mobile.follow!(taro)
+    end
+
     following_feeds = Book.following_feeds(mh_mobile)
     expected_feeds = [
       books(:book_6),
