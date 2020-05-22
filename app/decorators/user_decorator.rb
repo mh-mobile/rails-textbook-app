@@ -9,7 +9,7 @@ module UserDecorator
     if profile_icon.attached?
       image_tag profile_icon, class: PROFILE_ICON_CLASS_NAME
     else
-      image_tag "/assets/person_noimage.png", class: PROFILE_ICON_CLASS_NAME
+      image_tag asset_path("person_noimage.png") , class: PROFILE_ICON_CLASS_NAME
     end
   end
 
