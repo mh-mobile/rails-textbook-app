@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 lock "~> 3.14.0"
 
 set :application, "book_app"
@@ -9,11 +11,11 @@ set :deploy_via, :remote_cache
 
 # rbenv
 set :rbenv_type, :user
-set :rbenv_ruby, File.read('.ruby-version').strip
+set :rbenv_ruby, File.read(".ruby-version").strip
 set :rbenv_prefix, "RBENV_ROOT=#{fetch(:rbenv_path)} RBENV_VERSION=#{fetch(:rbenv_ruby)} #{fetch(:rbenv_path)}/bin/rbenv exec"
 set :rbenv_map_bins, %w{rake gem bundle ruby rails}
 set :rbenv_roles, :all
-append :rbenv_map_bins, 'puma', 'pumactl'
+append :rbenv_map_bins, "puma", "pumactl"
 
 # linked
 append :linked_files, "config/database.yml", "config/master.key", ".env"
@@ -26,7 +28,7 @@ set :nginx_ssl_certificate, "/etc/letsencrypt/live/#{fetch(:nginx_server_name)}/
 set :nginx_ssl_certificate_key, "/etc/letsencrypt/live/#{fetch(:nginx_server_name)}/privkey.pem"
 
 namespace :deploy do
-  desc "upload important file"    
+  desc "upload important file"
   task :upload do
     on roles(:app) do
       sudo :mkdir, "-p", "#{shared_path}/config"
@@ -49,7 +51,7 @@ Rake::Task["nginx:enable_site"].clear_actions
 Rake::Task["nginx:disable_site"].clear_actions
 
 namespace :nginx do
-  desc 'Enable nginx site'
+  desc "Enable nginx site"
   task :enable_site do
     on roles fetch(:nginx_roles) do
       sudo :ln, "-sf",
@@ -59,7 +61,7 @@ namespace :nginx do
     invoke :'nginx:reload'
   end
 
-  desc 'Disable nginx site'
+  desc "Disable nginx site"
   task :disable_site do
     on roles fetch(:nginx_roles) do
       config_link = "#{fetch(:nginx_path)}/sites-enabled/#{fetch(:application)}_#{fetch(:stage)}"
