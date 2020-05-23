@@ -48,9 +48,6 @@ jobs:
       - run:
           name: run test
           command: bundle exec rails test
-      - add_ssh_keys:
-        fingerprints:
-          - ""
 
 # We use workflows to orchestrate the jobs that we declared above.
 workflows:
