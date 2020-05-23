@@ -1,0 +1,24 @@
+mh_mobile:
+  username: mh-mobile
+  email: mh-mobile@example.com
+  encrypted_password: <%= Devise::Encryptor.digest(User, 'QjT7QeyjUDUYz2Fy') %>
+  uid: <%= User.create_unique_string %>
+
+hiro:
+  username: hiro 
+  email: hiro@example.com
+  encrypted_password: <%= Devise::Encryptor.digest(User, 'QjT7QeyjUDUYz2Fy') %>
+  uid: <%= User.create_unique_string %>
+
+hanako:
+  username: hanako
+  email: hanako@example.com
+  encrypted_password: <%= Devise::Encryptor.digest(User, 'QjT7QeyjUDUYz2Fy') %>
+  uid: <%= User.create_unique_string %>
+
+taro:
+  username: taro
+  email: taro@example.com
+  encrypted_password: <%= Devise::Encryptor.digest(User, 'QjT7QeyjUDUYz2Fy') %>
+  uid: <%= User.create_unique_string %>
+  postcode: "100-0005"
