@@ -51,12 +51,6 @@ jobs:
       - add_ssh_keys:
         fingerprints:
           - "${KEY_FINGERPRINT}"
-      - deploy:
-        name: start deploy
-        command: |
-          if [ "${CIRCLE_BRANCH}" == "feature/circleci-test" ]; then
-            bundle exec cap production deploy
-          fi
 
 # We use workflows to orchestrate the jobs that we declared above.
 workflows:
