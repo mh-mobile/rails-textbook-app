@@ -1,39 +1,70 @@
-# config valid for current version and patch releases of Capistrano
 lock "~> 3.14.0"
 
-set :application, "my_app_name"
-set :repo_url, "git@example.com:me/my_repo.git"
+set :application, "book_app"
+set :repo_url, "git@github.com:mh-mobile/rails-textbook-app.git"
+set :branch, "feature/nginx_rails"
+set :deploy_to, "/var/www/#{fetch(:application)}_#{fetch(:stage)}"
+set :user, "deploy"
+set :deploy_via, :remote_cache
 
-# Default branch is :master
-# ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
+# rbenv
+set :rbenv_type, :user
+set :rbenv_ruby, File.read('.ruby-version').strip
+set :rbenv_prefix, "RBENV_ROOT=#{fetch(:rbenv_path)} RBENV_VERSION=#{fetch(:rbenv_ruby)} #{fetch(:rbenv_path)}/bin/rbenv exec"
+set :rbenv_map_bins, %w{rake gem bundle ruby rails}
+set :rbenv_roles, :all
+append :rbenv_map_bins, 'puma', 'pumactl'
 
-# Default deploy_to directory is /var/www/my_app_name
-# set :deploy_to, "/var/www/my_app_name"
+# linked
+append :linked_files, "config/database.yml", "config/master.key", ".env"
+append :linked_dirs, "log", "tmp/pids", "tmp/cache", "tmp/sockets", "public/system", "public/uploads"
 
-# Default value for :format is :airbrussh.
-# set :format, :airbrussh
+# nginx
+set :nginx_server_name, "bootmbyk.work"
+set :nginx_use_ssl, true
+set :nginx_ssl_certificate, "/etc/letsencrypt/live/#{fetch(:nginx_server_name)}/fullchain.pem"
+set :nginx_ssl_certificate_key, "/etc/letsencrypt/live/#{fetch(:nginx_server_name)}/privkey.pem"
 
-# You can configure the Airbrussh format using :format_options.
-# These are the defaults.
-# set :format_options, command_output: true, log_file: "log/capistrano.log", color: :auto, truncate: :auto
+namespace :deploy do
+  desc "upload important file"    
+  task :upload do
+    on roles(:app) do
+      sudo :mkdir, "-p", "#{shared_path}/config"
+      sudo %[chown -R #{fetch(:user)}:#{fetch(:user)} #{deploy_to}]
+      sudo :mkdir, "-p", "/etc/nginx/sites-enabled"
+      sudo :mkdir, "-p", "/etc/nginx/sites-available"
 
-# Default value for :pty is false
-# set :pty, true
+      upload!("config/database.yml", "#{shared_path}/config/database.yml")
+      upload!("config/master.key", "#{shared_path}/config/master.key")
+      upload!(".env", "#{shared_path}/.env")
+    end
+  end
 
-# Default value for :linked_files is []
-# append :linked_files, "config/database.yml"
+  before :starting, :upload
+  before "check:linked_files", "puma:nginx_config"
+  after "deploy:published", "nginx:restart"
+end
 
-# Default value for linked_dirs is []
-# append :linked_dirs, "log", "tmp/pids", "tmp/cache", "tmp/sockets", "public/system"
+Rake::Task["nginx:enable_site"].clear_actions
+Rake::Task["nginx:disable_site"].clear_actions
 
-# Default value for default_env is {}
-# set :default_env, { path: "/opt/ruby/bin:$PATH" }
+namespace :nginx do
+  desc 'Enable nginx site'
+  task :enable_site do
+    on roles fetch(:nginx_roles) do
+      sudo :ln, "-sf",
+        "#{fetch(:nginx_path)}/sites-available/#{fetch(:application)}_#{fetch(:stage)}",
+        "#{fetch(:nginx_path)}/sites-enabled/#{fetch(:application)}_#{fetch(:stage)}"
+    end
+    invoke :'nginx:reload'
+  end
 
-# Default value for local_user is ENV['USER']
-# set :local_user, -> { `git config user.name`.chomp }
-
-# Default value for keep_releases is 5
-# set :keep_releases, 5
-
-# Uncomment the following to require manually verifying the host key before first deploy.
-# set :ssh_options, verify_host_key: :secure
+  desc 'Disable nginx site'
+  task :disable_site do
+    on roles fetch(:nginx_roles) do
+      config_link = "#{fetch(:nginx_path)}/sites-enabled/#{fetch(:application)}_#{fetch(:stage)}"
+      sudo :unlink, config_link if test "[ -f #{config_link} ]"
+    end
+    invoke :'nginx:reload'
+  end
+end
