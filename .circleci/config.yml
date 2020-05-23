@@ -50,7 +50,7 @@ jobs:
           command: bundle exec rails test
       - add_ssh_keys:
         fingerprints:
-          - "${KEY_FINGERPRINT}"
+          - ""
 
 # We use workflows to orchestrate the jobs that we declared above.
 workflows:
