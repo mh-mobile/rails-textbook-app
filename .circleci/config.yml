@@ -14,7 +14,7 @@ jobs:
       - checkout # pull down our git code.
       - add_ssh_keys:
         fingerprints:
-          - "${KEY_FINGERPRINT}"
+          - "SO:ME:FIN:G:ER:PR:IN:T"
       - ruby/install-deps # use the ruby orb to install dependencies
       # use the node orb to install our packages
       # specifying that we use `yarn` and to cache dependencies with `yarn.lock`
