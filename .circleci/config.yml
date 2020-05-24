@@ -1,0 +1,54 @@
+version: 2.1
+
+orbs:
+  ruby: circleci/ruby@1.0 
+  node: circleci/node@2
+
+jobs:
+  test:
+    parallelism: 3 
+    docker:
+      - image: circleci/ruby:2.7.1-node-browsers
+    environment:
+      BUNDLE_JOBS: "3"
+      BUNDLE_RETRY: "3"
+      RAILS_ENV: test
+    steps:
+      - checkout 
+      - ruby/install-deps 
+      - node/install-packages:
+          pkg-manager: yarn
+          cache-key: "yarn.lock"
+      - run:
+          name: Database setup
+          command: bundle exec rails db:schema:load --trace
+      - run:
+          name: run test
+          command: bundle exec rails test
+
+  deploy:  
+    docker:
+      - image: circleci/ruby:2.7.1-node-browsers
+    steps:  
+      - checkout  
+      - run:
+          name: Bundle install
+          command: bundle install
+      - add_ssh_keys:  
+          fingerprints:  
+            - d2:21:d1:8a:fc:86:ad:cb:1f:e3:33:1f:53:50:bb:88
+      - deploy:  
+          name: Deploy with Capistrano  
+          command: bundle exec cap production deploy  
+
+workflows:
+  version: 2
+  test_and_deploy:     
+    jobs:          
+      - test       
+      - deploy:
+          requires:
+            - test
+          filters:
+              branches:
+                only: feature/circleci-test

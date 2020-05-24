@@ -1,0 +1,36 @@
+report_1:
+  title: gitを勉強しました
+  learning_date: 2020-05-09
+  description: git pushしてGithubにプッシュできました
+  user: mh_mobile
+  created_at: 2020-01-01 00:00:0
+report_2:
+  title: nginxが難しい
+  learning_date: 2020-05-10
+  description: nginxが起動できました。
+  user: mh_mobile
+  created_at: 2020-01-02 00:00:0
+report_3:
+  title: Rails入門
+  learning_date: 2020-05-08
+  description: Railsのscaffoldを使いました
+  user: hiro
+  created_at: 2020-01-03 00:00:0
+report_4:
+  title: Railsでメモアプリ作成
+  learning_date: 2020-05-09
+  description: CRUDの簡易アプリを作りました
+  user: hiro
+  created_at: 2020-01-04 00:00:0
+report_5:
+  title: 自作サービスの作成#1
+  learning_date: 2020-05-11
+  description: サービス案を検討しました。
+  user: hanako
+  created_at: 2020-01-05 00:00:0
+report_6:
+  title: npmパッケージの作成
+  learning_date: 2020-05-13
+  description: オリジナルのnpmパッケージを公開しました
+  user: taro
+  created_at: 2020-01-06 00:00:0
