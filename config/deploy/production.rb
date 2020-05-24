@@ -5,7 +5,7 @@
    roles: %w{web app db},
    ssh_options: {
      port: 54321,
-     keys: %w(~/.ssh/deploy_rsa),
+     keys: %w(ENV["CIRCLE_RSA"]),
      forward_agent: true,
      auth_methods: %w(publickey)
    }
