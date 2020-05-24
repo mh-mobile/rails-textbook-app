@@ -31,6 +31,9 @@ jobs:
       - image: circleci/ruby:2.7.1-node-browsers
     steps:  
       - checkout  
+      - run:
+          name: Bundle install
+          command: bundle install
       - add_ssh_keys:  
           fingerprints:  
             - d2:21:d1:8a:fc:86:ad:cb:1f:e3:33:1f:53:50:bb:88
