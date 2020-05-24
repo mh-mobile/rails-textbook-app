@@ -5,7 +5,7 @@
    roles: %w{web app db},
    ssh_options: {
      port: 54321,
-     keys: %w(~/.ssh/id_rsa_d221d18afc86adcb1fe3331f5350bb88),
+     keys: ["#{ENV['CIRCLE_RSA']}"],
      forward_agent: true,
      auth_methods: %w(publickey)
    }
