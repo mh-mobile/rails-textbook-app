@@ -3,18 +3,6 @@
 require "test_helper"
 
 class UserTest < ActiveSupport::TestCase
-  test "#save" do
-    user = User.new(
-      username: "tanaka",
-      email: "tanaka@example.com",
-      password: "QjT7QeyjUDUYz2Fy",
-      password_confirmation: "QjT7QeyjUDUYz2Fy",
-      uid: User.create_unique_string
-      )
-    user.save
-    assert user["id"].present?
-  end
-
   test "#forward_postcode" do
     taro = users(:taro)
     assert_equal "100", taro.forward_postcode

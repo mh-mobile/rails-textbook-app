@@ -10,19 +10,6 @@ class CommentTest < ActiveSupport::TestCase
     assert_equal hiro, comment_1.user
   end
 
-  test "#save" do
-    mh_mobile = users(:mh_mobile)
-    book_1 = books(:book_1)
-    comment = Comment.new(
-      content: "書籍コメント投稿",
-      commentable: book_1,
-      commentable_type: "Book",
-      )
-    comment.user = mh_mobile
-    comment.save
-    assert comment["id"].present?
-  end
-
   test "should belongs_to corrent commentable" do
     book_1 = books(:book_1)
     comment_1 = comments(:comment_1)
