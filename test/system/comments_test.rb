@@ -15,9 +15,7 @@ class CommentsTest < ApplicationSystemTestCase
     end
     sleep 10
 
-    within ".normal-comment" do
-      assert_text "テスト投稿です"
-    end
+    assert has_text?(:visible, "テスト投稿です")
   end
 
   test "update comment" do
@@ -35,9 +33,7 @@ class CommentsTest < ApplicationSystemTestCase
 
     sleep 10
 
-    within ".normal-comment" do
-      assert_text "コメント更新"
-    end
+    assert has_text?(:visible, "コメント更新")
   end
 
   test "delete comment" do
