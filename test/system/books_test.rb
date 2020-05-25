@@ -44,7 +44,7 @@ class BooksTest < ApplicationSystemTestCase
     book_1 = books(:book_1)
     visit "/books/#{book_1.id}/edit"
     assert_text "書籍編集"
-    assert_equal book_1.title, find("input[name='book[title]']").value,
+    assert_equal book_1.title, find("input[name='book[title]']").value
     assert_equal book_1.memo, find("textarea[name='book[memo]']").value
     assert_equal book_1.author, find("input[name='book[author]']").value
     assert_button "登録"
