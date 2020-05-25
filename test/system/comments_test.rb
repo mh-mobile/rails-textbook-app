@@ -13,7 +13,6 @@ class CommentsTest < ApplicationSystemTestCase
       fill_in "comment[content]", with: "テスト投稿です"
       click_button "コメントする"
     end
-    sleep 10
 
     assert has_text?(:visible, "テスト投稿です")
   end
@@ -31,8 +30,6 @@ class CommentsTest < ApplicationSystemTestCase
       click_button "保存"
     end
 
-    sleep 10
-
     assert has_text?(:visible, "コメント更新")
   end
 
@@ -45,8 +42,6 @@ class CommentsTest < ApplicationSystemTestCase
         click_link "削除"
       end
     end
-
-    sleep 10
 
     assert_no_text comment_9.content
   end
