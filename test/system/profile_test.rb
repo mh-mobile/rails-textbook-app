@@ -22,7 +22,6 @@ class ProfileTest < ApplicationSystemTestCase
       click_button "更新"
     end
 
-    sleep 3
     assert_text "アカウント情報を変更しました。"
   end
 end
