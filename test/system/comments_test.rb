@@ -15,7 +15,9 @@ class CommentsTest < ApplicationSystemTestCase
     end
     sleep 5
 
-    assert_text "テスト投稿です"
+    within ".normal-comment" do
+      assert_text "テスト投稿です"
+    end
   end
 
   test "update comment" do
@@ -33,7 +35,9 @@ class CommentsTest < ApplicationSystemTestCase
 
     sleep 5
 
-    assert_text "コメント更新"
+    within ".normal-comment" do
+      assert_text "コメント更新"
+    end
   end
 
   test "delete comment" do
