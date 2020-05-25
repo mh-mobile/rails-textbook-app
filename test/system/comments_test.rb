@@ -13,7 +13,7 @@ class CommentsTest < ApplicationSystemTestCase
       fill_in "comment[content]", with: "テスト投稿です"
       click_button "コメントする"
     end
-    sleep 5
+    sleep 10
 
     within ".normal-comment" do
       assert_text "テスト投稿です"
@@ -33,7 +33,7 @@ class CommentsTest < ApplicationSystemTestCase
       click_button "保存"
     end
 
-    sleep 5
+    sleep 10
 
     within ".normal-comment" do
       assert_text "コメント更新"
@@ -50,7 +50,7 @@ class CommentsTest < ApplicationSystemTestCase
       end
     end
 
-    sleep 5
+    sleep 10
 
     assert_no_text comment_9.content
   end
