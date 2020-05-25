@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 require "test_helper"
-require_relative "./supports/login_helper"
+require "supports/login_helper"
 
 class ApplicationSystemTestCase < ActionDispatch::SystemTestCase
   include LoginHelper
