@@ -12,5 +12,4 @@ class ApplicationSystemTestCase < ActionDispatch::SystemTestCase
     # Ajax対策のため長めに待機
     Capybara.default_max_wait_time = 30
   }
-
 end
