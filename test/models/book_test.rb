@@ -3,13 +3,6 @@
 require "test_helper"
 
 class BookTest < ActiveSupport::TestCase
-  test "should belongs_to corrent user" do
-    mh_mobile = users(:mh_mobile)
-    book_1 = books(:book_1)
-
-    assert_equal mh_mobile, book_1.user
-  end
-
   test ".following_feeds" do
     mh_mobile = users(:mh_mobile)
     hanako = users(:hanako)
