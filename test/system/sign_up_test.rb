@@ -58,7 +58,4 @@ class SignUpTest < ApplicationSystemTestCase
 パスワード確認 はパスワードと一致しません。
     EOF
   end
-
-  test "create user" do
-  end
 end
