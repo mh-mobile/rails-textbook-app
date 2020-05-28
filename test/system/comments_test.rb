@@ -14,7 +14,7 @@ class CommentsTest < ApplicationSystemTestCase
       click_button "コメントする"
     end
 
-    assert has_text?(:visible, "テスト投稿です")
+    assert_text :visible, "テスト投稿です"
   end
 
   test "update comment" do
