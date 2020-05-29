@@ -24,6 +24,7 @@ gem "slim-rails"
 gem "html2slim"
 gem "bulma-rails"
 gem "font-awesome-rails"
+gem "pg"
 
 group :development, :test do
   gem "byebug", platforms: [:mri, :mingw, :x64_mingw]
