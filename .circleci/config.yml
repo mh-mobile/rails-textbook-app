@@ -1,4 +1,46 @@
 version: 2.1
+
+commands:
+  restore_bundle:
+    steps:
+      - restore_cache:
+          keys:
+            - rails-demo-bundle-v2-{{ checksum "Gemfile.lock" }}
+            - rails-demo-bundle-v2-
+
+  install_bundle:
+    steps:
+      - run:
+          name: Install Bundle
+          command: bundle check || bundle install
+
+  save_bundle:
+    steps:
+      - save_cache:
+          key: rails-demo-bundle-v2-{{ checksum "Gemfile.lock" }}
+          paths:
+            - vendor/bundle
+
+  restore_yarn:
+    steps:
+      - restore_cache:
+          keys:
+            - rails-demo-yarn-{{ checksum "yarn.lock" }}
+            - rails-demo-yarn-
+
+  install_yarn:
+    steps:
+      - run:
+          name: Install Yarn
+          command: yarn install --cache-folder ~/.cache/yarn
+
+  save_yarn:
+    steps:
+      - save_cache:
+          key: rails-demo-yarn-{{ checksum "yarn.lock" }}
+          paths:
+            - ~/.cache/yarn
+
 jobs: 
   test: 
     docker:
@@ -21,55 +63,48 @@ jobs:
       - run:
           name: Bundler を指定
           command: bundle -v
-
-      - restore_cache:
-          keys:
-            - rails-demo-bundle-v2-{{ checksum "Gemfile.lock" }}
-            - rails-demo-bundle-v2-
-
-      - run:
-          name: Install Bundle
-          command: bundle check || bundle install
-
-      - save_cache:
-          key: rails-demo-bundle-v2-{{ checksum "Gemfile.lock" }}
-          paths:
-            - vendor/bundle
-
-      - restore_cache:
-          keys:
-            - rails-demo-yarn-{{ checksum "yarn.lock" }}
-            - rails-demo-yarn-
-
-      - run:
-          name: Install Yarn
-          command: yarn install --cache-folder ~/.cache/yarn
-
-      - save_cache:
-          key: rails-demo-yarn-{{ checksum "yarn.lock" }}
-          paths:
-            - ~/.cache/yarn
-
+      - restore_bundle
+      - install_bundle
+      - save_bundle
+      - restore_yarn
+      - install_yarn
+      - save_yarn
       - run:
           name: Wait For DB
           command: dockerize -wait tcp://localhost:5432 -timeout 1m
-
       - run:
           name: Setup DB
           command: bundle exec rails db:schema:load --trace
-
       - run:
           name: Test rails
           command: |
             bundle exec rails test          
             bundle exec rails test:system
 
-      - store_test_results: 
-          path: test_results
+  deploy:
+    docker:
+      - image: circleci/ruby:2.7.1-node-browsers
+    steps:
+      - checkout
+      - restore_bundle
+      - install_bundle
+      - save_bundle
+      - add_ssh_keys:
+          fingerprints:
+            - d2:21:d1:8a:fc:86:ad:cb:1f:e3:33:1f:53:50:bb:88
+      - deploy:
+          name: Deploy with Capistrano
+          command: bundle exec cap production deploy
 
 workflows:
   version: 2
-  test:
+  test_and_deploy:
     jobs:
       - test
+      - deploy:
+          requires:
+            - test
+          filters:
+              branches:
+                only: feature/circleci_build_test
 
