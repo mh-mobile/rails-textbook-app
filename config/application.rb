@@ -20,6 +20,7 @@ module BooksApp
     config.hosts << ".ngrok.io"
     config.hosts << "127.0.0.1"
     config.hosts << "localhost"
+    config.hosts << "bootmbyk.work"
     config.i18n.default_locale = :ja
     config.time_zone = "Asia/Tokyo"
   end
