@@ -96,6 +96,9 @@ GEM
       capistrano (~> 3.1)
     capistrano-nginx (1.0.0)
       capistrano (~> 3.1)
+    capistrano-postgresql (6.2.0)
+      capistrano (>= 3.0)
+      sshkit (>= 1.17.0)
     capistrano-rails (1.5.0)
       capistrano (~> 3.1)
       capistrano-bundler (~> 1.1)
@@ -336,6 +339,7 @@ DEPENDENCIES
   byebug
   capistrano-bundler
   capistrano-nginx
+  capistrano-postgresql
   capistrano-rails
   capistrano-rbenv
   capistrano3-puma

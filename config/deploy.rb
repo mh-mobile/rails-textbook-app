@@ -27,6 +27,16 @@ set :nginx_use_ssl, true
 set :nginx_ssl_certificate, "/etc/letsencrypt/live/#{fetch(:nginx_server_name)}/fullchain.pem"
 set :nginx_ssl_certificate_key, "/etc/letsencrypt/live/#{fetch(:nginx_server_name)}/privkey.pem"
 
+# postgres
+set :pg_without_sudo, false
+set :pg_host, "localhost"
+set :pg_database, "#{fetch(:application)}_#{fetch(:stage)}"
+set :pg_password, ENV["BOOKAPP_DATABASE_PASSWORD"]
+set :pg_username, "#{fetch(:user)}"
+set :pg_extensions, ['citext','hstore']
+set :pg_encoding, 'UTF-8'
+set :pg_pool, '100'
+
 namespace :deploy do
   desc "upload important file"
   task :upload do
