@@ -47,8 +47,6 @@ namespace :deploy do
       sudo :mkdir, "-p", "/etc/nginx/sites-available"
 
       upload!("config/database.yml", "#{shared_path}/config/database.yml")
-      upload!("config/master.key", "#{shared_path}/config/master.key")
-      upload!(".env", "#{shared_path}/.env")
     end
   end
 
