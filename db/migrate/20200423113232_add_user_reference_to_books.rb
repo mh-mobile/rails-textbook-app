@@ -3,7 +3,7 @@
 class AddUserReferenceToBooks < ActiveRecord::Migration[6.0]
   def up
     add_reference :books, :user, foreign_key: true
-    change_column :books, :user_id, :interger, null: false
+    change_column :books, :user_id, :integer, null: false
   end
 
   def down
