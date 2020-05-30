@@ -106,5 +106,5 @@ workflows:
             - test
           filters:
               branches:
-                only: feature/circleci_build_test
+                only: master
 

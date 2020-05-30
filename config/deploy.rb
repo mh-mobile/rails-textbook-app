@@ -4,7 +4,7 @@ lock "~> 3.14.0"
 
 set :application, "book_app"
 set :repo_url, "git@github.com:mh-mobile/rails-textbook-app.git"
-set :branch, "feature/postgres"
+set :branch, "master"
 set :deploy_to, "/var/www/#{fetch(:application)}_#{fetch(:stage)}"
 set :user, "deploy"
 set :deploy_via, :remote_cache
